@@ -1,28 +1,19 @@
 import express from "express";
-import http from "http";
-import bodyParser from "body-parser";
-import cookieParser from "cookie-parser";
-import compression from "compression";
 import cors from "cors";
-import mongoose from "mongoose";
 import dotenv from "dotenv";
+import getToken from "./services/getToken";
 dotenv.config();
 
 const app = express();
 
-app.use(
-  cors({
-    credentials: true,
-  })
-);
+app.use(cors());
 
-app.use(compression());
-app.use(cookieParser());
-app.use(bodyParser.json());
+app.get("/token", async (req: express.Request, res: express.Response) => {
+  const response = await getToken();
+  res.status(response.status);
+  res.send(response.data);
+});
 
-const server = http.createServer(app);
-
-server.listen(8080, () => {
-  console.log("Server running on 8080");
-  console.log(process.env.MONGO_URL);
+app.listen(process.env.PORT, () => {
+  console.log(`Server running on ${process.env.PORT}`);
 });
