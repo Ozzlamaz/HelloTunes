@@ -11,6 +11,7 @@ const getToken = async () => {
     },
     data: "grant_type=client_credentials",
   });
+  console.log(response.data);
   return response;
 };
 
