@@ -1,15 +1,7 @@
 import axios from "axios";
 
-export interface FetchResponse {
-  access_token?: string;
-  token_type?: string;
-  expires_in?: 3600;
-  error?: string;
-  error_description?: string;
-}
-
 const getToken = async () => {
-  const response = await axios<FetchResponse>(process.env.TOKEN_URL, {
+  const response = await axios(process.env.TOKEN_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
