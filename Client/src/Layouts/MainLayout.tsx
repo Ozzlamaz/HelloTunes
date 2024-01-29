@@ -1,12 +1,12 @@
-import Navbar from "../Components/Navbar";
+import { Outlet } from "react-router-dom";
 import { Container } from "@chakra-ui/react";
-import ItemGrid from "../Components/ItemGrid";
+import Navbar from "../Components/Navbar";
 
 const MainLayout = () => {
   return (
     <Container maxWidth="8xl">
       <Navbar />
-      <ItemGrid />
+      <Outlet />
     </Container>
   );
 };
