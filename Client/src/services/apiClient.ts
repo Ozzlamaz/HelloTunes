@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { InternalAxiosRequestConfig } from "axios";
 import getCookie from "./getCookie";
 import Cookies from "universal-cookie";
 import { ParsedCookie } from "../interfaces/ParsedCookie";
@@ -10,10 +10,9 @@ export const apiClient = axios.create({
 });
 
 apiClient.interceptors.request.use(
-  async (req) => {
+  async (req: InternalAxiosRequestConfig) => {
     if (!cookie.get("token")) {
       await getCookie();
-      console.log(cookie.get("token"));
     }
     const parsedCookie: ParsedCookie = cookie.get("token");
     req.headers.Authorization = `${parsedCookie.token_type} ${parsedCookie.access_token}`;
@@ -23,3 +22,9 @@ apiClient.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
+const getData = (endpoint: string) => {
+  return apiClient.get(endpoint).then((res) => res.data);
+};
+
+export default getData;
