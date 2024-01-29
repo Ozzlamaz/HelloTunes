@@ -1,15 +1,13 @@
-import { Outlet } from "react-router-dom";
-import NavbarComponent from "../Components/NavbarComponent";
-import { Container } from "react-bootstrap";
+import Navbar from "../Components/Navbar";
+import { Container } from "@chakra-ui/react";
+import ItemGrid from "../Components/ItemGrid";
 
 const MainLayout = () => {
   return (
-    <>
-      <NavbarComponent />
-      <Container>
-        <Outlet />
-      </Container>
-    </>
+    <Container maxWidth="8xl">
+      <Navbar />
+      <ItemGrid />
+    </Container>
   );
 };
 export default MainLayout;
