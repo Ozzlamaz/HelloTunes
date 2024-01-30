@@ -8,7 +8,7 @@ const ItemGrid = () => {
     <SimpleGrid columns={{ sm: 1, md: 3, lg: 4, xl: 5 }} textAlign={"center"}>
       {data?.albums?.items.map((item) => (
         <Box>
-          <Image src={getImages(item.images)} />
+          <Image margin={"auto"} src={getImages(item.images)} />
         </Box>
       ))}
     </SimpleGrid>
