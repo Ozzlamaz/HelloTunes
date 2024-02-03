@@ -5,16 +5,35 @@ import {
   InputGroup,
   InputLeftElement,
 } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import useFilterQueryStore from "../filterquery/store";
 
 const SearchInput = () => {
+  const setQuery = useFilterQueryStore((s) => s.setQuery);
+  // const inputRef = useRef<HTMLInputElement>(null);
+  const [inputValue, setInputValue] = useState("");
+
+  useEffect(() => {
+    if (!inputValue) return;
+    const debounceTimer = setTimeout(() => {
+      setQuery(inputValue);
+    }, 500);
+
+    return () => clearTimeout(debounceTimer);
+  }, [inputValue]);
+
   return (
     <FormControl>
-      <form>
-        <InputGroup>
-          <InputLeftElement children={<SearchIcon />} />
-          <Input borderRadius={20} type="text" placeholder="Search Tracks..." />
-        </InputGroup>
-      </form>
+      <InputGroup>
+        <InputLeftElement children={<SearchIcon />} />
+        <Input
+          value={inputValue}
+          borderRadius={20}
+          type="text"
+          placeholder="Search Tracks..."
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+      </InputGroup>
     </FormControl>
   );
 };

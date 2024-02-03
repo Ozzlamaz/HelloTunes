@@ -1,4 +1,4 @@
-import axios, { InternalAxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig, InternalAxiosRequestConfig } from "axios";
 import getCookie from "./getCookie";
 import Cookies from "universal-cookie";
 import { ParsedCookie } from "../interfaces/ParsedCookie";
@@ -23,8 +23,11 @@ apiClient.interceptors.request.use(
   }
 );
 
-const getData = (endpoint: string) => {
-  return apiClient.get(endpoint).then((res) => res.data);
+const getData = async (
+  endpoint: string,
+  requestConfig?: AxiosRequestConfig
+) => {
+  return apiClient.get(endpoint, requestConfig).then((res) => res.data);
 };
 
 export default getData;

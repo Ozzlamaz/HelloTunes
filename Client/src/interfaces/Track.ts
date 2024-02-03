@@ -5,6 +5,7 @@ export interface Track {
   images: Image[];
   name: string;
   type: string;
+  genres?: string[];
   duration_ms: number;
   popularity: number;
   uri: string;
