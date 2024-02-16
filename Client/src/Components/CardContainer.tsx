@@ -8,6 +8,8 @@ interface Props {
 const CardContainer = ({ children }: Props) => {
   return (
     <Box
+      boxShadow={"xl"}
+      overflow="hidden"
       position="relative"
       transition="transform 0.3s ease-in-out"
       _hover={{ transform: "scale(1.05)" }}

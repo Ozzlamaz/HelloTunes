@@ -1,13 +1,13 @@
 import axios from "axios";
+let counter: number;
 
 const getCookie = async () => {
-  try {
-    await axios.get(import.meta.env.VITE_COOKIE_URL, {
+  clearTimeout(counter);
+  counter = setTimeout(() => {
+    axios.get(import.meta.env.VITE_COOKIE_URL, {
       withCredentials: true,
     });
-  } catch (error) {
-    console.log(error);
-  }
+  }, 100);
 };
 
 export default getCookie;

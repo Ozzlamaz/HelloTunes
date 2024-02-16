@@ -1,9 +1,11 @@
-import { AlbumsResponse } from "./Album";
-import { ArtistsResponse } from "./Artist";
-import { TracksResponse } from "./Track";
-
-export interface ResponseData {
-  albums?: AlbumsResponse;
-  artists?: ArtistsResponse;
-  tracks?: TracksResponse;
+interface ResponseData<T> {
+  [key: string]: {
+    href: string;
+    limit: number;
+    next?: string;
+    offset: number;
+    previous?: string;
+    total: number;
+    items: T[];
+  };
 }

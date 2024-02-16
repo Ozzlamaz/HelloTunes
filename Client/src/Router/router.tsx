@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layouts/MainLayout";
-import ItemGrid from "../Components/ItemGrid";
+import HomePage from "../Pages/HomePage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    children: [{ index: true, element: <ItemGrid /> }],
+    children: [{ index: true, element: <HomePage /> }],
   },
 ]);
 

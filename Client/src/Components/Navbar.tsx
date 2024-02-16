@@ -7,7 +7,7 @@ import BurgerMenu from "./BurgerMenu";
 
 const Navbar = () => {
   return (
-    <HStack paddingY={5} justifyContent={"space-between"}>
+    <HStack marginY={5} justifyContent={"space-between"}>
       <Image w={125} src={logo} />
       <BurgerMenu>
         <NavLink to={"/"}>Home</NavLink>

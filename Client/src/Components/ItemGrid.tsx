@@ -1,30 +1,27 @@
-import { SimpleGrid } from "@chakra-ui/react";
-import ItemCard from "./ItemCard";
-import React from "react";
-import { Artist } from "../interfaces/Artist";
-import { Album } from "../interfaces/Album";
-import { Track } from "../interfaces/Track";
-import useSearchQuery from "../hooks/useSearchQuery";
-import useFilterQueryStore from "../filterquery/store";
+import { Grid, GridItem, Hide } from "@chakra-ui/react";
+import ArtistGrid from "./ArtistGrid";
+import AlbumGrid from "./AlbumGrid";
+import TrackList from "./TrackList";
+import TopResultCard from "./TopResultCard";
 
 const ItemGrid = () => {
-  const filterQuery = useFilterQueryStore((s) => s.filterQuery);
-  const { data } = useSearchQuery(filterQuery);
-
   return (
-    <SimpleGrid
-      spacing={5}
-      columns={{ sm: 1, md: 3, lg: 4, xl: 5 }}
-      textAlign={"center"}
-    >
-      {data?.[Object.keys(data)[0]]?.items.map(
-        (item: Album | Artist | Track) => (
-          <React.Fragment key={item.id}>
-            <ItemCard item={item} />
-          </React.Fragment>
-        )
-      )}
-    </SimpleGrid>
+    <Grid gridGap={5} marginY={5} templateColumns={"repeat(2, 1fr)"}>
+      <Hide below="lg">
+        <GridItem>
+          <TopResultCard />
+        </GridItem>
+      </Hide>
+      <GridItem rowSpan={2} colSpan={{ base: 2, lg: 1 }}>
+        <TrackList />
+      </GridItem>
+      <GridItem colSpan={2}>
+        <AlbumGrid />
+      </GridItem>
+      <GridItem colSpan={2}>
+        <ArtistGrid />
+      </GridItem>
+    </Grid>
   );
 };
 export default ItemGrid;

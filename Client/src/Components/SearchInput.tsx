@@ -30,7 +30,7 @@ const SearchInput = () => {
           value={inputValue}
           borderRadius={20}
           type="text"
-          placeholder="Search Tracks..."
+          placeholder="Seach anything..."
           onChange={(e) => setInputValue(e.target.value)}
         />
       </InputGroup>

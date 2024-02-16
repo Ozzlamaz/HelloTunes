@@ -3,4 +3,5 @@ export interface FilterQuery {
   type: string;
   genre?: string;
   year?: string;
+  offset?: number;
 }

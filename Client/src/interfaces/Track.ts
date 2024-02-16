@@ -1,8 +1,10 @@
-import { Image } from "./Image";
+import { Album } from "./Album";
+import { Artist } from "./Artist";
 
 export interface Track {
   id: string;
-  images: Image[];
+  album: Album;
+  artists: Artist[];
   name: string;
   type: string;
   genres?: string[];
