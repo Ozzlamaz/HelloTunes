@@ -1,3 +1,4 @@
+import { Artist } from "./Artist";
 import { Image } from "./Image";
 
 export interface Album {
@@ -6,6 +7,7 @@ export interface Album {
   genres: string[];
   images: Image[];
   name: string;
+  artists: Artist[];
   type: string;
   popularity: number;
   uri: string;

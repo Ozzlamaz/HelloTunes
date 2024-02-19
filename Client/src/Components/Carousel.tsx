@@ -5,17 +5,23 @@ import { useEffect, useState } from "react";
 
 interface Props {
   children?: ReactElement[];
+  centered?: true;
+  pauseOnHover?: true;
 }
 
-function Carousel({ children = [] }: Props) {
+function Carousel({ children = [], centered, pauseOnHover }: Props) {
   const [index, setIndex] = useState(0);
 
   let slideTimeout: number;
 
-  useEffect(() => {
+  const startSlideTimer = () => {
     slideTimeout = setTimeout(() => {
       nextSlide();
     }, 5000);
+  };
+
+  useEffect(() => {
+    startSlideTimer();
   }, [index]);
 
   const nextSlide = () => {
@@ -38,20 +44,22 @@ function Carousel({ children = [] }: Props) {
 
   return (
     <HStack
-      marginX={"auto"}
+      marginX={centered && "auto"}
       gap={0}
       borderRadius={20}
-      overflow={"hidden"}
       position={"relative"}
+      overflow={"hidden"}
     >
       {React.Children.map(children, (child, childIndex) => {
         return (
           <Box
             transition={"all"}
             transitionDuration={"500ms"}
-            opacity={childIndex === index ? 100 : 0}
             flex={"0 0 100%"}
             transform={`translateX(${-index * 100}%)`}
+            opacity={childIndex === index ? 100 : 0}
+            onMouseEnter={pauseOnHover && (() => clearTimeout(slideTimeout))}
+            onMouseLeave={pauseOnHover && (() => startSlideTimer())}
           >
             {React.cloneElement(child, {
               marginX: "auto",

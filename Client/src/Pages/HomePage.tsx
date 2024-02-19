@@ -7,7 +7,7 @@ const HomePage = () => {
     <Grid
       marginX={"auto"}
       maxW={"6xl"}
-      templateColumns={{ base: "auto", lg: "auto auto" }}
+      templateColumns={{ base: "1fr", lg: "1fr 1fr" }}
       gridGap={5}
     >
       <GridItem>
