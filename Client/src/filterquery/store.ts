@@ -3,26 +3,19 @@ import { FilterQueryStore } from "../interfaces/FilterQueryStore";
 
 const useFilterQueryStore = create<FilterQueryStore>((set) => ({
   filterQuery: {
-    q: "rihanna",
-    type: "album",
-    genre: undefined,
-    year: undefined,
+    q: "tag:new",
+    type: "artist,album,track",
+    limit: 5,
     offset: 0,
   },
   setQuery: (q) =>
     set((store) => ({
-      filterQuery: {
-        q,
-        type: store.filterQuery.type,
-        offset: store.filterQuery.offset,
-      },
+      filterQuery: { ...store.filterQuery, q },
     })),
-  setGenre: (genre) =>
-    set((store) => ({ filterQuery: { ...store.filterQuery, genre } })),
   setType: (type) =>
     set((store) => ({ filterQuery: { ...store.filterQuery, type } })),
-  setYear: (year) =>
-    set((store) => ({ filterQuery: { ...store.filterQuery, year } })),
+  setLimit: (limit) =>
+    set((store) => ({ filterQuery: { ...store.filterQuery, limit } })),
 }));
 
 export default useFilterQueryStore;

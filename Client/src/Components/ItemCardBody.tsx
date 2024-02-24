@@ -6,13 +6,11 @@ import { Artist } from "../interfaces/Artist";
 import { Tooltip } from "@chakra-ui/react";
 
 interface Props {
-  item: Album | Artist;
+  item?: Album | Artist;
   topResult?: boolean;
 }
 
 const ItemCardBody = ({ item, topResult }: Props) => {
-  const { name, type, images } = item;
-
   return (
     <Box>
       <Image
@@ -20,13 +18,15 @@ const ItemCardBody = ({ item, topResult }: Props) => {
         marginX={"auto"}
         width={"100%"}
         objectFit={"cover"}
-        borderRadius={type === "album" ? "50%" : "10%"}
-        src={topResult ? images[0]?.url : images[1]?.url}
+        borderRadius={item?.type === "album" ? "50%" : "10%"}
+        src={topResult ? item?.images[0]?.url : item?.images[1]?.url}
       />
       <Box paddingY={3}>
-        <Tooltip label={name}>
+        <Tooltip label={item?.name}>
           <Heading fontSize={topResult ? 32 : 16} as={"h2"}>
-            {name.length > 20 ? name.substring(0, 20) + "..." : name}
+            {item && item.name.length > 20
+              ? item.name.substring(0, 20) + "..."
+              : item?.name}
           </Heading>
         </Tooltip>
         <Text></Text>

@@ -4,7 +4,7 @@ import { Container } from "@chakra-ui/layout";
 
 const MainLayout = () => {
   return (
-    <Container maxW="8xl">
+    <Container maxW="8xl" marginY={5}>
       <Navbar />
       <Outlet />
     </Container>

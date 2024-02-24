@@ -7,9 +7,11 @@ interface Props {
 
 const ItemCarousel = ({ item }: Props) => {
   return (
-    <Box position={"relative"} maxWidth={"fit-content"}>
+    <Box marginX={"auto"} position={"relative"} maxWidth={"fit-content"}>
       <Image borderRadius={20} key={item.id} src={item.images[0].url} />
+      {/*overlay*/}
       <Box
+        borderRadius={20}
         position={"absolute"}
         transition={"all 0.25s ease-in-out"}
         padding={10}

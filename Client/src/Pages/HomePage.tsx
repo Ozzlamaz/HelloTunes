@@ -1,22 +1,17 @@
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import AlbumsCarousel from "../Components/AlbumsCarousel";
-import TrackList from "../Components/TrackList";
+import useFilterQueryStore from "../filterquery/store";
+import useItems from "../hooks/useItems";
+import AlbumGrid from "../Components/AlbumGrid";
 
 const HomePage = () => {
+  const filterQuery = useFilterQueryStore((s) => s.filterQuery);
+  const { data } = useItems(filterQuery);
   return (
-    <Grid
-      marginX={"auto"}
-      maxW={"6xl"}
-      templateColumns={{ base: "1fr", lg: "1fr 1fr" }}
-      gridGap={5}
-    >
-      <GridItem>
-        <AlbumsCarousel />
-      </GridItem>
-      <GridItem>
-        <TrackList />
-      </GridItem>
-    </Grid>
+    <Box>
+      <AlbumsCarousel data={data} />
+      <AlbumGrid data={data} />
+    </Box>
   );
 };
 export default HomePage;

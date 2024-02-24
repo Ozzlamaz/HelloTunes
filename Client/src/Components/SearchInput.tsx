@@ -10,7 +10,6 @@ import useFilterQueryStore from "../filterquery/store";
 
 const SearchInput = () => {
   const setQuery = useFilterQueryStore((s) => s.setQuery);
-  // const inputRef = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {

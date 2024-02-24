@@ -1,19 +1,20 @@
 import { Heading, UnorderedList } from "@chakra-ui/react";
-import useTracks from "../hooks/useTracks";
-import useFilterQueryStore from "../filterquery/store";
 import TrackListItem from "./TrackListItem";
 import React from "react";
+import { ResponseData } from "../interfaces/ResponseData";
 
-const TrackList = () => {
-  const filterQuery = useFilterQueryStore((s) => s.filterQuery);
-  const { data } = useTracks(filterQuery);
+interface Props {
+  data?: ResponseData;
+}
+
+const TrackList = ({ data }: Props) => {
   return (
     <>
       <Heading marginBottom={3} as={"h1"}>
         Tracks
       </Heading>
       <UnorderedList>
-        {data?.tracks.items.map((item) => (
+        {data?.tracks?.items.map((item) => (
           <React.Fragment key={item.id}>
             <TrackListItem item={item} />
           </React.Fragment>
