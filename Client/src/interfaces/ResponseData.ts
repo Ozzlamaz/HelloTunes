@@ -3,7 +3,7 @@ import { Artist } from "./Artist";
 import { Track } from "./Track";
 
 export interface ResponseData {
-  artists?: {
+  artists: {
     href: string;
     limit: number;
     next?: string;
@@ -12,7 +12,7 @@ export interface ResponseData {
     total: number;
     items: Artist[];
   };
-  albums?: {
+  albums: {
     href: string;
     limit: number;
     next?: string;
@@ -21,7 +21,7 @@ export interface ResponseData {
     total: number;
     items: Album[];
   };
-  tracks?: {
+  tracks: {
     href: string;
     limit: number;
     next?: string;

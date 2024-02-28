@@ -7,8 +7,10 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import useFilterQueryStore from "../filterquery/store";
+import { useNavigate } from "react-router-dom";
 
 const SearchInput = () => {
+  const navigate = useNavigate();
   const setQuery = useFilterQueryStore((s) => s.setQuery);
   const [inputValue, setInputValue] = useState("");
 
@@ -16,6 +18,7 @@ const SearchInput = () => {
     if (!inputValue) return;
     const debounceTimer = setTimeout(() => {
       setQuery(inputValue);
+      navigate(`search/${inputValue}`);
     }, 500);
 
     return () => clearTimeout(debounceTimer);

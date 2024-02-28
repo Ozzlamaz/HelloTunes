@@ -8,7 +8,7 @@ export interface Album {
   images: Image[];
   name: string;
   artists: Artist[];
-  type: string;
+  type: "album";
   popularity: number;
   uri: string;
 }

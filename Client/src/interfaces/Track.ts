@@ -6,7 +6,7 @@ export interface Track {
   album: Album;
   artists: Artist[];
   name: string;
-  type: string;
+  type: "track";
   genres?: string[];
   duration_ms: number;
   popularity: number;

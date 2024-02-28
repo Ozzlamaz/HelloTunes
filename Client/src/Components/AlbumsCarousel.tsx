@@ -15,7 +15,7 @@ const AlbumsCarousel = ({ data }: Props) => {
       </Heading>
       <Carousel pauseOnHover>
         {data?.albums?.items.map((item) => (
-          <ItemCarousel item={item} />
+          <ItemCarousel key={item.id} item={item} />
         ))}
       </Carousel>
     </>

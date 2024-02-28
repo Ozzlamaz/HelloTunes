@@ -5,7 +5,7 @@ export interface Artist {
   genres: string[];
   images: Image[];
   name: string;
-  type: string;
+  type: "artist";
   popularity: number;
   uri: string;
 }

@@ -24,8 +24,10 @@ const ItemCarousel = ({ item }: Props) => {
         background={"rgba(0,0,0,0.5)"}
         cursor={"pointer"}
       >
-        <Heading as={"h2"}>{item.name}</Heading>
-        <Heading as={"h2"}>
+        <Heading color={"whiteAlpha.900"} as={"h2"}>
+          {item.name}
+        </Heading>
+        <Heading color={"whiteAlpha.900"} as={"h2"}>
           {item.artists.map((artist) => artist.name).join(", ")}
         </Heading>
       </Box>

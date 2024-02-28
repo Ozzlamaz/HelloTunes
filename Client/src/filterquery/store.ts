@@ -6,7 +6,6 @@ const useFilterQueryStore = create<FilterQueryStore>((set) => ({
     q: "tag:new",
     type: "artist,album,track",
     limit: 5,
-    offset: 0,
   },
   setQuery: (q) =>
     set((store) => ({

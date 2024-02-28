@@ -11,8 +11,8 @@ const CardContainer = ({ children }: Props) => {
       boxShadow={"xl"}
       overflow="hidden"
       position="relative"
-      transition="transform 0.3s ease-in-out"
-      _hover={{ transform: "scale(1.05)" }}
+      transition="transform 0.15s ease-in"
+      _hover={{ transform: "scale(1.02)" }}
     >
       {children}
     </Box>
