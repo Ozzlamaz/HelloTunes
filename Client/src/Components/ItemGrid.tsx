@@ -6,7 +6,7 @@ import { SimpleGrid } from "@chakra-ui/react";
 
 interface Props {
   items?: Album[] | Artist[] | Track[];
-  tracks?: true;
+  tracks?: boolean;
 }
 
 const ItemGrid = ({ items, tracks }: Props) => {
@@ -21,4 +21,5 @@ const ItemGrid = ({ items, tracks }: Props) => {
     </SimpleGrid>
   );
 };
+
 export default ItemGrid;

@@ -1,25 +1,35 @@
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useNavigate, useParams } from "react-router-dom";
-import useFilterQueryStore from "../filterquery/store";
+import { useParams } from "react-router-dom";
 import useInfiniteItems from "../hooks/useInfiniteItems";
-import { useEffect } from "react";
 import ItemGrid from "../Components/ItemGrid";
 
 const InfiniteSeachPage = () => {
-  const filterQuery = useFilterQueryStore((s) => s.filterQuery);
-  const setType = useFilterQueryStore((s) => s.setType);
-  const setLimit = useFilterQueryStore((s) => s.setLimit);
+  const params = useParams();
 
-  const { type, query } = useParams();
-  const navigate = useNavigate();
+  const { data, fetchNextPage, hasNextPage } = useInfiniteItems(params);
 
-  const { data } = useInfiniteItems(filterQuery);
+  if (!data) return <div>Loading...</div>;
 
-  useEffect(() => {
-    setLimit(20);
-    setType(type!);
-  }, []);
+  const itemCount = data.pages.reduce(
+    (total, page) => total + page[`${params.type}s`].items.length,
+    0
+  );
 
-  return null;
+  const Items = data.pages.reduce(
+    (allItems: any[], page) => [...allItems, ...page[`${params.type}s`].items],
+    []
+  );
+
+  return (
+    <InfiniteScroll
+      dataLength={itemCount}
+      next={fetchNextPage}
+      hasMore={hasNextPage}
+      loader={<div>...loading</div>}
+      endMessage={<div>No More Results</div>}
+    >
+      <ItemGrid tracks={params.type === "track" ? true : false} items={Items} />
+    </InfiniteScroll>
+  );
 };
 export default InfiniteSeachPage;

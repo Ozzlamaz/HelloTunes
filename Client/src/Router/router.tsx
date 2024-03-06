@@ -1,7 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layouts/MainLayout";
 import HomePage from "../Pages/HomePage";
-import SearchPage from "../Components/SearchPage";
+import SearchPage from "../Pages/SearchPage";
+import InfiniteSeachPage from "../Pages/InfiniteSeachPage";
 
 const router = createBrowserRouter([
   {
@@ -9,8 +10,14 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: "search/:query", element: <SearchPage /> },
-      { path: "search/:type/:query", element: <SearchPage /> },
+      {
+        path: "search/:q",
+        element: <SearchPage />,
+      },
+      {
+        path: "search/:type/:query",
+        element: <InfiniteSeachPage />,
+      },
     ],
   },
 ]);

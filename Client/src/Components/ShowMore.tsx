@@ -8,6 +8,7 @@ interface Props {
 
 const ShowMore = ({ type, query }: Props) => {
   const navigate = useNavigate();
+
   return (
     <Button
       marginTop={5}
