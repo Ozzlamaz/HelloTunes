@@ -15,7 +15,7 @@ const router = createBrowserRouter([
         element: <SearchPage />,
       },
       {
-        path: "search/:type/:query",
+        path: "search/:type/:q",
         element: <InfiniteSeachPage />,
       },
     ],

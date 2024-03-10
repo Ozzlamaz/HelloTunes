@@ -2,6 +2,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useParams } from "react-router-dom";
 import useInfiniteItems from "../hooks/useInfiniteItems";
 import ItemGrid from "../Components/ItemGrid";
+import { Box } from "@chakra-ui/react";
 
 const InfiniteSeachPage = () => {
   const params = useParams();
@@ -21,15 +22,17 @@ const InfiniteSeachPage = () => {
   );
 
   return (
-    <InfiniteScroll
-      dataLength={itemCount}
-      next={fetchNextPage}
-      hasMore={hasNextPage}
-      loader={<div>...loading</div>}
-      endMessage={<div>No More Results</div>}
-    >
-      <ItemGrid tracks={params.type === "track" ? true : false} items={Items} />
-    </InfiniteScroll>
+    <Box marginY={5}>
+      <InfiniteScroll
+        dataLength={itemCount}
+        next={fetchNextPage}
+        hasMore={hasNextPage}
+        loader={<div>...loading</div>}
+        endMessage={<div>No More Results</div>}
+      >
+        <ItemGrid tracks={params.type === "track" && true} items={Items} />
+      </InfiniteScroll>
+    </Box>
   );
 };
 export default InfiniteSeachPage;

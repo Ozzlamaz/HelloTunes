@@ -10,6 +10,7 @@ const ArtistCardBody = ({ item, topResult }: Props) => {
   return (
     <>
       <Image
+        maxHeight={400}
         aspectRatio={1 / 1}
         marginX={"auto"}
         objectFit={"cover"}

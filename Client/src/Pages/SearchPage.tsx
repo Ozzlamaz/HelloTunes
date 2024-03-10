@@ -15,7 +15,7 @@ const SearchPage = () => {
   const { artists, albums, tracks } = data;
 
   return (
-    <Grid gridGap={10} marginY={5} templateColumns={"repeat(2, 1fr)"}>
+    <Grid gridGap={5} marginY={5} templateColumns={"repeat(2, 1fr)"}>
       <GridItem colSpan={{ base: 2, lg: 1 }}>
         <CustomHeading>Top Result</CustomHeading>
         <ItemCard topResult item={artists.items[0]} />
