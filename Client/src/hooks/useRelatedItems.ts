@@ -1,12 +1,16 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import getData from "../services/apiClient";
+import { RelatedItemsRes } from "../interfaces/RelatedItemsRes";
+import { Track } from "../interfaces/Track";
+import { Artist } from "../interfaces/Artist";
+import { Album } from "../interfaces/Album";
 
 const useRelatedItems = (
   relatedType: string,
   relatedId: string | undefined,
   relatedItems: string
-) => {
-  return useInfiniteQuery({
+) =>
+  useInfiniteQuery<RelatedItemsRes<Album | Artist | Track>>({
     queryKey: [`related${relatedItems}`, relatedId],
     queryFn: ({ pageParam }) =>
       getData(`${relatedType!}/${relatedId}/${relatedItems}`, {
@@ -19,6 +23,5 @@ const useRelatedItems = (
         ? allPages.length * 20
         : undefined,
   });
-};
 
 export default useRelatedItems;

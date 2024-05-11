@@ -1,11 +1,10 @@
 import useRelatedItems from "../../hooks/useRelatedItems";
 import { Artist } from "../../interfaces/Artist";
 import ItemGrid from "../ItemGrid";
-import Section from "../Section";
-import CustomHeading from "../Heading1";
+import Heading1 from "../Heading1";
 import SubSection from "../SubSection";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Album } from "../../interfaces/Album";
+import ItemCard from "../Cards/ItemCard";
 
 interface Props {
   artist: Artist;
@@ -23,33 +22,24 @@ const RelatedAlbums = ({ artist, isLoading }: Props) => {
   const itemCount =
     data?.pages.reduce((total, page) => total + page.items.length, 0) || 0;
 
-  const Items: Album[] = data?.pages.reduce(
-    (allItems: Album[], page) => [...allItems, ...page.items],
-    []
-  );
-
   return (
-    <Section>
-      <CustomHeading>
-        {isLoading ? "Loading..." : artist.name + " albums"}
-      </CustomHeading>
-      <SubSection id="scrollableDiv" height="51.65rem">
-        <InfiniteScroll
-          dataLength={albumsLoading ? 20 : itemCount}
-          next={fetchNextPage}
-          hasMore={hasNextPage}
-          loader={<div>...loading</div>}
-          endMessage={<div>No More Results</div>}
-          scrollableTarget="scrollableDiv"
-        >
-          <ItemGrid
-            isLoading={isLoading || albumsLoading}
-            skelCount={20}
-            items={Items}
-          />
-        </InfiniteScroll>
-      </SubSection>
-    </Section>
+    <SubSection id="scrollableDiv" height="55rem">
+      <Heading1>{isLoading ? "Loading..." : artist.name + " albums"}</Heading1>
+      <InfiniteScroll
+        dataLength={albumsLoading ? 20 : itemCount}
+        next={fetchNextPage}
+        hasMore={hasNextPage}
+        loader={<div>...loading</div>}
+        endMessage={<div>No More Results</div>}
+        scrollableTarget="scrollableDiv"
+      >
+        <ItemGrid>
+          {data?.pages.map((page) =>
+            page.items.map((item) => <ItemCard item={item} key={item.id} />)
+          )}
+        </ItemGrid>
+      </InfiniteScroll>
+    </SubSection>
   );
 };
 export default RelatedAlbums;

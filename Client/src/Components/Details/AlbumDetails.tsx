@@ -5,6 +5,7 @@ import { Album } from "../../interfaces/Album";
 import RelatedAlbums from "./RelatedAlbums";
 import Heading1 from "../Heading1";
 import SubSection from "../SubSection";
+import ItemCard from "../Cards/ItemCard";
 
 interface Props {
   album: Album;
@@ -19,15 +20,13 @@ const AlbumDetails = ({ album, isLoading }: Props) => {
       </Section>
       <Section maxW={"6xl"}>
         <Section>
-          <Heading1>{isLoading ? "..." : album.name + " Tracks"}</Heading1>
           <SubSection>
-            <ItemGrid
-              isLoading={isLoading}
-              skelCount={5}
-              tracks
-              details
-              items={album?.tracks.items}
-            />
+            <Heading1>{isLoading ? "..." : album.name + " Tracks"}</Heading1>
+            <ItemGrid list>
+              {album?.tracks.items.map((item) => (
+                <ItemCard details item={item} key={item.id} />
+              ))}
+            </ItemGrid>
           </SubSection>
         </Section>
         <Section>

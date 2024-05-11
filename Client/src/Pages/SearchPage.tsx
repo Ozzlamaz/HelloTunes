@@ -5,8 +5,9 @@ import ItemGrid from "../Components/ItemGrid";
 import ShowMore from "../Components/ShowMore";
 import TopResultCard from "../Components/Cards/TopResultCard";
 import Section from "../Components/Section";
-import CustomHeading from "../Components/Heading1";
+import Heading1 from "../Components/Heading1";
 import SubSection from "../Components/SubSection";
+import ItemCard from "../Components/Cards/ItemCard";
 
 const SearchPage = () => {
   const params = useParams();
@@ -20,8 +21,8 @@ const SearchPage = () => {
         templateColumns={"repeat(2, 1fr)"}
       >
         <GridItem colSpan={{ base: 2, lg: 1 }}>
-          <CustomHeading>Top Result</CustomHeading>
           <SubSection>
+            <Heading1>Top Result</Heading1>
             <TopResultCard
               isLoading={isLoading}
               item={data?.artists.items[0]}
@@ -29,50 +30,49 @@ const SearchPage = () => {
           </SubSection>
         </GridItem>
         <GridItem colSpan={{ base: 2, lg: 1 }}>
-          <CustomHeading>Tracks</CustomHeading>
           <SubSection>
-            <ItemGrid
-              isLoading={isLoading}
-              skelCount={5}
-              tracks
-              items={data?.tracks.items}
+            <Heading1>Tracks</Heading1>
+            <ItemGrid list>
+              {data?.tracks.items.map((item) => (
+                <ItemCard item={item} key={item.id} />
+              ))}
+            </ItemGrid>
+            <ShowMore
+              disabled={isLoading}
+              type={data?.tracks.items[0].type}
+              query={params.q!}
             />
           </SubSection>
-          <ShowMore
-            disabled={isLoading}
-            type={data?.tracks.items[0].type}
-            query={params.q!}
-          />
         </GridItem>
         <GridItem colSpan={2}>
-          <CustomHeading>Albums</CustomHeading>
           <SubSection>
-            <ItemGrid
-              isLoading={isLoading}
-              skelCount={5}
-              items={data?.albums.items}
+            <Heading1>Albums</Heading1>
+            <ItemGrid>
+              {data?.albums.items.map((item) => (
+                <ItemCard item={item} key={item.id} />
+              ))}
+            </ItemGrid>
+            <ShowMore
+              disabled={isLoading}
+              type={data?.albums.items[0].type}
+              query={params.q!}
             />
           </SubSection>
-          <ShowMore
-            disabled={isLoading}
-            type={data?.albums.items[0].type}
-            query={params.q!}
-          />
         </GridItem>
         <GridItem colSpan={2}>
-          <CustomHeading>Artists</CustomHeading>
           <SubSection>
-            <ItemGrid
-              isLoading={isLoading}
-              skelCount={5}
-              items={data?.artists.items}
+            <Heading1>Artists</Heading1>
+            <ItemGrid>
+              {data?.artists.items.map((item) => (
+                <ItemCard item={item} key={item.id} />
+              ))}
+            </ItemGrid>
+            <ShowMore
+              disabled={isLoading}
+              type={data?.artists.items[0].type}
+              query={params.q!}
             />
           </SubSection>
-          <ShowMore
-            disabled={isLoading}
-            type={data?.artists.items[0].type}
-            query={params.q!}
-          />
         </GridItem>
       </Grid>
     </Section>
