@@ -2,66 +2,80 @@ import { Grid, GridItem } from "@chakra-ui/react";
 import useItems from "../hooks/useItems";
 import { useParams } from "react-router-dom";
 import ItemGrid from "../Components/ItemGrid";
-import CustomHeading from "../Components/CustomHeading";
-import ItemCard from "../Components/ItemCard";
 import ShowMore from "../Components/ShowMore";
-import SkeletonGrid from "../Components/SkeletonGrid";
-import SkeletonCardBody from "../Components/SkeletonCardBody";
+import TopResultCard from "../Components/Cards/TopResultCard";
+import Section from "../Components/Section";
+import CustomHeading from "../Components/Heading1";
+import SubSection from "../Components/SubSection";
 
 const SearchPage = () => {
-  const { q, type } = useParams();
-  const { data, isLoading } = useItems({ q, type });
+  const params = useParams();
+  const { data, isLoading } = useItems(params);
 
   return (
-    <Grid gridGap={5} marginY={5} templateColumns={"repeat(2, 1fr)"}>
-      <GridItem colSpan={{ base: 2, lg: 1 }}>
-        <CustomHeading>Top Result</CustomHeading>
-        {isLoading ? (
-          <SkeletonCardBody topResult />
-        ) : (
-          <ItemCard topResult item={data?.artists.items[0]} />
-        )}
-      </GridItem>
-      <GridItem colSpan={{ base: 2, lg: 1 }}>
-        <CustomHeading>Tracks</CustomHeading>
-        {isLoading ? (
-          <SkeletonGrid size={5} tracks />
-        ) : (
-          <ItemGrid tracks={true} items={data?.tracks.items} />
-        )}
-        <ShowMore
-          disabled={isLoading}
-          type={data?.tracks.items[0].type}
-          query={q!}
-        />
-      </GridItem>
-      <GridItem colSpan={2}>
-        <CustomHeading>Albums</CustomHeading>
-        {isLoading ? (
-          <SkeletonGrid size={5} />
-        ) : (
-          <ItemGrid items={data?.albums.items} />
-        )}
-        <ShowMore
-          disabled={isLoading}
-          type={data?.albums.items[0].type}
-          query={q!}
-        />
-      </GridItem>
-      <GridItem colSpan={2}>
-        <CustomHeading>Artists</CustomHeading>
-        {isLoading ? (
-          <SkeletonGrid size={5} />
-        ) : (
-          <ItemGrid items={data?.artists.items} />
-        )}
-        <ShowMore
-          disabled={isLoading}
-          type={data?.artists.items[0].type}
-          query={q!}
-        />
-      </GridItem>
-    </Grid>
+    <Section>
+      <Grid
+        gridGap={5}
+        templateRows={"auto auto auto"}
+        templateColumns={"repeat(2, 1fr)"}
+      >
+        <GridItem colSpan={{ base: 2, lg: 1 }}>
+          <CustomHeading>Top Result</CustomHeading>
+          <SubSection>
+            <TopResultCard
+              isLoading={isLoading}
+              item={data?.artists.items[0]}
+            />
+          </SubSection>
+        </GridItem>
+        <GridItem colSpan={{ base: 2, lg: 1 }}>
+          <CustomHeading>Tracks</CustomHeading>
+          <SubSection>
+            <ItemGrid
+              isLoading={isLoading}
+              skelCount={5}
+              tracks
+              items={data?.tracks.items}
+            />
+          </SubSection>
+          <ShowMore
+            disabled={isLoading}
+            type={data?.tracks.items[0].type}
+            query={params.q!}
+          />
+        </GridItem>
+        <GridItem colSpan={2}>
+          <CustomHeading>Albums</CustomHeading>
+          <SubSection>
+            <ItemGrid
+              isLoading={isLoading}
+              skelCount={5}
+              items={data?.albums.items}
+            />
+          </SubSection>
+          <ShowMore
+            disabled={isLoading}
+            type={data?.albums.items[0].type}
+            query={params.q!}
+          />
+        </GridItem>
+        <GridItem colSpan={2}>
+          <CustomHeading>Artists</CustomHeading>
+          <SubSection>
+            <ItemGrid
+              isLoading={isLoading}
+              skelCount={5}
+              items={data?.artists.items}
+            />
+          </SubSection>
+          <ShowMore
+            disabled={isLoading}
+            type={data?.artists.items[0].type}
+            query={params.q!}
+          />
+        </GridItem>
+      </Grid>
+    </Section>
   );
 };
 export default SearchPage;

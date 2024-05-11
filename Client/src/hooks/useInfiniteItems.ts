@@ -19,9 +19,10 @@ const useInfiniteItems = (params: Params<string>) => {
       }),
     staleTime: 8 * 60 * 60 * 1000, // 8h
     initialPageParam: 0,
-    getNextPageParam: (lastPage, allpages) => {
-      return lastPage[`${params.type}s`].next
-        ? allpages.length * 20
+    getNextPageParam: (lastPage, allPages) => {
+      return lastPage[`${params.type}s`].next &&
+        lastPage[`${params.type}s`].items.length !== 0
+        ? allPages.length * 20
         : undefined;
     },
   });

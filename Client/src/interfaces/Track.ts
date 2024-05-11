@@ -10,10 +10,11 @@ export interface Track {
   genres?: string[];
   duration_ms: number;
   popularity: number;
+  preview: string;
   uri: string;
 }
 
-export interface TracksResponse {
+export interface TracksSubDetails {
   total: number;
   items: Track[];
 }

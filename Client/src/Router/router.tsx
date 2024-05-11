@@ -3,6 +3,7 @@ import MainLayout from "../Layouts/MainLayout";
 import HomePage from "../Pages/HomePage";
 import SearchPage from "../Pages/SearchPage";
 import InfiniteSeachPage from "../Pages/InfiniteSeachPage";
+import ItemDetailsPage from "../Pages/ItemDetailsPage";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "search/:type/:q",
         element: <InfiniteSeachPage />,
+      },
+      {
+        path: "details/:type/:id",
+        element: <ItemDetailsPage />,
       },
     ],
   },
