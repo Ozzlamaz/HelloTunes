@@ -8,6 +8,8 @@ import Section from "../Components/Section";
 import Heading1 from "../Components/Heading1";
 import SubSection from "../Components/SubSection";
 import ItemCard from "../Components/Cards/ItemCard";
+import { SwiperSlide } from "swiper/react";
+import SearchSwiper from "../Components/Swiper/SearchSwiper";
 
 const SearchPage = () => {
   const params = useParams();
@@ -32,7 +34,7 @@ const SearchPage = () => {
         <GridItem colSpan={{ base: 2, lg: 1 }}>
           <SubSection>
             <Heading1>Tracks</Heading1>
-            <ItemGrid list>
+            <ItemGrid list overflowY={"scroll"} height="27.45rem">
               {data?.tracks.items.map((item) => (
                 <ItemCard item={item} key={item.id} />
               ))}
@@ -47,11 +49,18 @@ const SearchPage = () => {
         <GridItem colSpan={2}>
           <SubSection>
             <Heading1>Albums</Heading1>
-            <ItemGrid>
+            <SearchSwiper paginationDiv="album-swiper">
+              {data?.albums.items.map((item) => (
+                <SwiperSlide key={item.id}>
+                  <ItemCard item={item} />
+                </SwiperSlide>
+              ))}
+            </SearchSwiper>
+            {/* <ItemGrid>
               {data?.albums.items.map((item) => (
                 <ItemCard item={item} key={item.id} />
               ))}
-            </ItemGrid>
+            </ItemGrid> */}
             <ShowMore
               disabled={isLoading}
               type={data?.albums.items[0].type}
@@ -62,11 +71,18 @@ const SearchPage = () => {
         <GridItem colSpan={2}>
           <SubSection>
             <Heading1>Artists</Heading1>
-            <ItemGrid>
+            <SearchSwiper paginationDiv="artist-swiper">
+              {data?.artists.items.map((item) => (
+                <SwiperSlide>
+                  <ItemCard item={item} key={item.id} />
+                </SwiperSlide>
+              ))}
+            </SearchSwiper>
+            {/* <ItemGrid>
               {data?.artists.items.map((item) => (
                 <ItemCard item={item} key={item.id} />
               ))}
-            </ItemGrid>
+            </ItemGrid> */}
             <ShowMore
               disabled={isLoading}
               type={data?.artists.items[0].type}

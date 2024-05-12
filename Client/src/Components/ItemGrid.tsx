@@ -18,7 +18,8 @@ const ItemGrid = ({ children, list, height, overflowY = "visible" }: Props) => {
       height={height}
       overflowY={overflowY}
       spacing={5}
-      columns={list ? 1 : { sm: 1, md: 3, lg: 4, xl: 5 }}
+      paddingRight={5}
+      columns={list ? 1 : { base: 1, sm: 2, md: 3, lg: 4, xl: 5 }}
     >
       {children}
     </SimpleGrid>
