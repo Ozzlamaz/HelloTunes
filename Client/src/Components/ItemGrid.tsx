@@ -10,15 +10,22 @@ interface Props {
   list?: boolean;
   height?: string;
   overflowY?: any;
+  paddingRight?: number;
 }
 
-const ItemGrid = ({ children, list, height, overflowY = "visible" }: Props) => {
+const ItemGrid = ({
+  children,
+  list,
+  height,
+  paddingRight,
+  overflowY = "visible",
+}: Props) => {
   return (
     <SimpleGrid
       height={height}
       overflowY={overflowY}
       spacing={5}
-      paddingRight={5}
+      paddingRight={paddingRight}
       columns={list ? 1 : { base: 1, sm: 2, md: 3, lg: 4, xl: 5 }}
     >
       {children}

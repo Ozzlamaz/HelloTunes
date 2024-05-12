@@ -34,7 +34,12 @@ const SearchPage = () => {
         <GridItem colSpan={{ base: 2, lg: 1 }}>
           <SubSection>
             <Heading1>Tracks</Heading1>
-            <ItemGrid list overflowY={"scroll"} height="27.45rem">
+            <ItemGrid
+              paddingRight={5}
+              list
+              overflowY={"scroll"}
+              height="27.45rem"
+            >
               {data?.tracks.items.map((item) => (
                 <ItemCard item={item} key={item.id} />
               ))}
@@ -56,11 +61,6 @@ const SearchPage = () => {
                 </SwiperSlide>
               ))}
             </SearchSwiper>
-            {/* <ItemGrid>
-              {data?.albums.items.map((item) => (
-                <ItemCard item={item} key={item.id} />
-              ))}
-            </ItemGrid> */}
             <ShowMore
               disabled={isLoading}
               type={data?.albums.items[0].type}
@@ -78,11 +78,6 @@ const SearchPage = () => {
                 </SwiperSlide>
               ))}
             </SearchSwiper>
-            {/* <ItemGrid>
-              {data?.artists.items.map((item) => (
-                <ItemCard item={item} key={item.id} />
-              ))}
-            </ItemGrid> */}
             <ShowMore
               disabled={isLoading}
               type={data?.artists.items[0].type}
