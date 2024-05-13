@@ -5,6 +5,7 @@ import Heading1 from "../Heading1";
 import SubSection from "../SubSection";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ItemCard from "../Cards/ItemCard";
+import { Album } from "../../interfaces/Album";
 
 interface Props {
   artist?: Artist;
@@ -17,7 +18,7 @@ const RelatedAlbums = ({ artist, isLoading }: Props) => {
     isLoading: albumsLoading,
     hasNextPage,
     fetchNextPage,
-  } = useRelatedItems("artists", artist?.id, "albums");
+  } = useRelatedItems<Album>("artists", artist?.id, "albums");
 
   const itemCount =
     data?.pages.reduce((total, page) => total + page.items.length, 0) || 0;
@@ -27,7 +28,7 @@ const RelatedAlbums = ({ artist, isLoading }: Props) => {
       id="scrollableDiv"
       height={itemCount < 15 ? "fit-content" : "55rem"}
     >
-      <Heading1>{isLoading ? "Loading..." : artist?.name + " albums"}</Heading1>
+      <Heading1>{isLoading ? "..." : artist?.name + " albums"}</Heading1>
       <InfiniteScroll
         dataLength={albumsLoading ? 20 : itemCount}
         next={fetchNextPage}

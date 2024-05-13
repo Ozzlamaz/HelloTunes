@@ -17,7 +17,7 @@ const RelatedTracks = ({ track, isLoading }: Props) => {
     isLoading: tracksLoading,
     hasNextPage,
     fetchNextPage,
-  } = useRelatedItems("albums", track?.album.id, "tracks");
+  } = useRelatedItems<Track>("albums", track?.album.id, "tracks");
 
   const itemCount =
     data?.pages.reduce((total, page) => total + page.items.length, 0) || 0;
