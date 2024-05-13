@@ -73,8 +73,8 @@ const SearchPage = () => {
             <Heading1>Artists</Heading1>
             <SearchSwiper paginationDiv="artist-swiper">
               {data?.artists.items.map((item) => (
-                <SwiperSlide>
-                  <ItemCard item={item} key={item.id} />
+                <SwiperSlide key={item.id}>
+                  <ItemCard item={item} />
                 </SwiperSlide>
               ))}
             </SearchSwiper>
