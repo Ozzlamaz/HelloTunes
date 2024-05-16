@@ -1,15 +1,16 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import useItems from "../hooks/useItems";
 import { useParams } from "react-router-dom";
-import ItemGrid from "../Components/ItemGrid";
+import ItemGrid from "../Components/Containers/ItemGrid";
 import ShowMore from "../Components/ShowMore";
 import TopResultCard from "../Components/Cards/TopResultCard";
-import Section from "../Components/Section";
+import Section from "../Components/Containers/Section";
 import Heading1 from "../Components/Heading1";
-import SubSection from "../Components/SubSection";
+import SubSection from "../Components/Containers/SubSection";
 import ItemCard from "../Components/Cards/ItemCard";
 import { SwiperSlide } from "swiper/react";
 import SearchSwiper from "../Components/Swiper/SearchSwiper";
+import ScrollContainer from "../Components/Containers/ScrollContainer";
 
 const SearchPage = () => {
   const params = useParams();
@@ -34,16 +35,13 @@ const SearchPage = () => {
         <GridItem colSpan={{ base: 2, lg: 1 }}>
           <SubSection>
             <Heading1>Tracks</Heading1>
-            <ItemGrid
-              paddingRight={5}
-              list
-              overflowY={"scroll"}
-              height="27.45rem"
-            >
-              {data?.tracks.items.map((item) => (
-                <ItemCard item={item} key={item.id} />
-              ))}
-            </ItemGrid>
+            <ScrollContainer id="scroll-container" maxHeight="27.45rem">
+              <ItemGrid list>
+                {data?.tracks.items.map((item) => (
+                  <ItemCard item={item} key={item.id} />
+                ))}
+              </ItemGrid>
+            </ScrollContainer>
             <ShowMore
               disabled={isLoading}
               type={data?.tracks.items[0].type}

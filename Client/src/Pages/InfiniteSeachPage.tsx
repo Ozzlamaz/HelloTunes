@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
-import ItemGrid from "../Components/ItemGrid";
+import ItemGrid from "../Components/Containers/ItemGrid";
 import useInfiniteItems from "../hooks/useInfiniteItems";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Section from "../Components/Section";
-import SubSection from "../Components/SubSection";
+import Section from "../Components/Containers/Section";
+import SubSection from "../Components/Containers/SubSection";
 import ItemCard from "../Components/Cards/ItemCard";
 import Heading1 from "../Components/Heading1";
+import ScrollContainer from "../Components/Containers/ScrollContainer";
 
 const InfiniteSeachPage = () => {
   const params = useParams();
@@ -23,21 +24,24 @@ const InfiniteSeachPage = () => {
     <Section maxW="6xl">
       <SubSection>
         <Heading1>{isLoading ? "..." : `${params.q} ${params.type}s`}</Heading1>
-        <InfiniteScroll
-          dataLength={isLoading ? 20 : itemCount}
-          next={fetchNextPage}
-          hasMore={hasNextPage}
-          loader={<div>...loading</div>}
-          endMessage={<div>No More Results</div>}
-        >
-          <ItemGrid list={params.type === "track" && true}>
-            {data?.pages.map((page) =>
-              page[`${params.type}s`].items.map((item) => (
-                <ItemCard key={item.id} item={item} />
-              ))
-            )}
-          </ItemGrid>
-        </InfiniteScroll>
+        <ScrollContainer id="scroll-container" maxHeight="55rem">
+          <InfiniteScroll
+            dataLength={isLoading ? 20 : itemCount}
+            next={fetchNextPage}
+            hasMore={hasNextPage}
+            loader={<div>...loading</div>}
+            endMessage={<div>No More Results</div>}
+            scrollableTarget="scroll-container"
+          >
+            <ItemGrid list={params.type === "track" && true}>
+              {data?.pages.map((page) =>
+                page[`${params.type}s`].items.map((item) => (
+                  <ItemCard key={item.id} item={item} />
+                ))
+              )}
+            </ItemGrid>
+          </InfiniteScroll>
+        </ScrollContainer>
       </SubSection>
     </Section>
   );

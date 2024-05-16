@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button, HStack } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
@@ -10,16 +10,16 @@ interface Props {
 const ShowMore = ({ type, query, disabled }: Props) => {
   const navigate = useNavigate();
   return (
-    <Button
-      isDisabled={disabled}
-      marginTop={5}
-      float={"right"}
-      onClick={() => {
-        navigate(`/search/${type}/${query}`);
-      }}
-    >
-      {`Show more ${type ? type + "s" : ""}`}
-    </Button>
+    <HStack justifyContent={"end"} marginTop={5}>
+      <Button
+        isDisabled={disabled}
+        onClick={() => {
+          navigate(`/search/${type}/${query}`);
+        }}
+      >
+        {`Show more ${type ? type + "s" : ""}`}
+      </Button>
+    </HStack>
   );
 };
 export default ShowMore;

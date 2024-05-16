@@ -10,7 +10,7 @@ interface Props {
 
 const TopResultCard = ({ item, isLoading }: Props) => {
   return (
-    <Box paddingX={5}>
+    <Box>
       {isLoading ? (
         <SkeletonCard topResult />
       ) : (

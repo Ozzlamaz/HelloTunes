@@ -1,13 +1,14 @@
 import AlbumDetailsCard from "../Components/Details/AlbumDetailsCard";
-import ItemGrid from "../Components/ItemGrid";
-import Section from "../Components/Section";
+import ItemGrid from "../Components/Containers/ItemGrid";
+import Section from "../Components/Containers/Section";
 import { Album } from "../interfaces/Album";
 import RelatedAlbums from "../Components/Details/RelatedAlbums";
 import Heading1 from "../Components/Heading1";
-import SubSection from "../Components/SubSection";
+import SubSection from "../Components/Containers/SubSection";
 import ItemCard from "../Components/Cards/ItemCard";
 import { useParams } from "react-router-dom";
 import useItemDetails from "../hooks/useItemDetails";
+import ScrollContainer from "../Components/Containers/ScrollContainer";
 
 const AlbumDetailsPage = () => {
   const { id } = useParams();
@@ -18,19 +19,19 @@ const AlbumDetailsPage = () => {
         <AlbumDetailsCard isLoading={isLoading} album={album} />
       </Section>
       <Section maxW={"6xl"}>
-        <Section>
-          <SubSection>
-            <Heading1>{isLoading ? "..." : album?.name + " Tracks"}</Heading1>
+        <SubSection>
+          <Heading1>{isLoading ? "..." : album?.name + " Tracks"}</Heading1>
+          <ScrollContainer id="scroll-container" maxHeight="55rem">
             <ItemGrid list>
               {album?.tracks.items.map((item) => (
                 <ItemCard details item={item} key={item.id} />
               ))}
             </ItemGrid>
-          </SubSection>
-        </Section>
-        <Section>
+          </ScrollContainer>
+        </SubSection>
+        <SubSection>
           <RelatedAlbums artist={album?.artists[0]} isLoading={isLoading} />
-        </Section>
+        </SubSection>
       </Section>
     </>
   );

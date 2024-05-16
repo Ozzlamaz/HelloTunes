@@ -1,7 +1,7 @@
 import { HStack } from "@chakra-ui/react";
 import TypeButton from "./TypeButton";
 import { useParams } from "react-router-dom";
-import Section from "../Section";
+import Section from "../Containers/Section";
 
 const TypeFilter = () => {
   const itemTypes = ["all", "artist", "album", "track"];

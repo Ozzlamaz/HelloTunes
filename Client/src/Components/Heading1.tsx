@@ -7,7 +7,6 @@ interface Props {
 const Heading1 = ({ children }: Props) => {
   return (
     <Heading marginBottom={5} as={"h1"}>
-      {/* {children.charAt(0).toUpperCase() + children.slice(1)} */}
       {children
         .split(" ")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
