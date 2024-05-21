@@ -32,7 +32,12 @@ const RelatedTracks = ({ track, isLoading }: Props) => {
           endMessage={itemCount < 15 ? null : <div>No More Results</div>}
           scrollableTarget="scroll-container-tracks"
         >
-          <ItemGrid details relatedPages={data?.pages} list />
+          <ItemGrid
+            isLoading={isLoading || tracksLoading}
+            details
+            relatedPages={data?.pages}
+            list
+          />
         </InfiniteScroll>
       </ScrollContainer>
     </>

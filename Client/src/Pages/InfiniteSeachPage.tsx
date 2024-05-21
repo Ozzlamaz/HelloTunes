@@ -33,7 +33,7 @@ const InfiniteSeachPage = () => {
             scrollableTarget="scroll-container"
           >
             {/* prettier-ignore*/}
-            <ItemGrid pages={data?.pages} list={params.type === "track" && true}/>
+            <ItemGrid isLoading={isLoading} pages={data?.pages} list={params.type === "track" && true}/>
           </InfiniteScroll>
         </ScrollContainer>
       </SubSection>

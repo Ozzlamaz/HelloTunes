@@ -1,21 +1,21 @@
 import { Skeleton } from "@chakra-ui/react";
 
 interface Props {
-  details?: boolean;
-  tracks?: boolean;
+  detailsCard?: boolean;
+  list?: boolean;
   topResult?: boolean;
 }
 
-const SkeletonCard = ({ tracks, topResult, details }: Props) => {
+const SkeletonCard = ({ list, topResult, detailsCard }: Props) => {
   return (
     <Skeleton
       borderRadius={5}
       height={
-        tracks
+        list
           ? "4.5rem"
           : topResult
           ? "27.499rem"
-          : details
+          : detailsCard
           ? "20rem"
           : "15.54rem"
       }

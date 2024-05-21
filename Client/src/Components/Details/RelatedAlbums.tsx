@@ -34,7 +34,10 @@ const RelatedAlbums = ({ artist, isLoading }: Props) => {
           endMessage={itemCount < 15 ? null : <div>No More Results</div>}
           scrollableTarget="scroll-container-albums"
         >
-          <ItemGrid relatedPages={data?.pages} />
+          <ItemGrid
+            isLoading={isLoading || albumsLoading}
+            relatedPages={data?.pages}
+          />
         </InfiniteScroll>
       </ScrollContainer>
     </>

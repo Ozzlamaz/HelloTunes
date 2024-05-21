@@ -11,7 +11,7 @@ interface Props {
 }
 
 const AlbumDetailsCard = ({ album, isLoading }: Props) => {
-  if (isLoading) return <SkeletonCard details />;
+  if (isLoading) return <SkeletonCard detailsCard />;
   return (
     <DetailsCard>
       <Image

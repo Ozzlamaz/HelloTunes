@@ -36,7 +36,7 @@ const SearchPage = () => {
           <SubSection>
             <Heading1>Tracks</Heading1>
             <ScrollContainer id="scroll-container" maxHeight="27.45rem">
-              <ItemGrid items={data?.tracks.items} list />
+              <ItemGrid isLoading={isLoading} items={data?.tracks.items} list />
             </ScrollContainer>
             <ShowMore
               disabled={isLoading}
