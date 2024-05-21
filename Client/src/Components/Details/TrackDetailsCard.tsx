@@ -15,9 +15,9 @@ const TrackDetailsCard = ({ track, isLoading }: Props) => {
   return (
     <DetailsCard>
       <Image
+        aspectRatio={1 / 1}
         width={320}
-        height={320}
-        marginX={"auto"}
+        margin={"auto"}
         borderRadius={5}
         src={track?.album.images[1].url}
       />
