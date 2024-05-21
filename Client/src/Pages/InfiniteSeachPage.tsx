@@ -22,7 +22,9 @@ const InfiniteSeachPage = () => {
   return (
     <Section maxW="6xl">
       <SubSection>
-        <Heading1>{isLoading ? "..." : `${params.q} ${params.type}s`}</Heading1>
+        <Heading1 isLoading={isLoading}>
+          {isLoading ? "..." : `${params.q} ${params.type}s`}
+        </Heading1>
         <ScrollContainer id="scroll-container" maxHeight="55rem">
           <InfiniteScroll
             dataLength={isLoading ? 20 : itemCount}

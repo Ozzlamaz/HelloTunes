@@ -25,7 +25,7 @@ const SearchPage = () => {
       >
         <GridItem colSpan={{ base: 2, lg: 1 }}>
           <SubSection>
-            <Heading1>Top Result</Heading1>
+            <Heading1 isLoading={isLoading}>Top Result</Heading1>
             <TopResultCard
               isLoading={isLoading}
               item={data?.artists.items[0]}
@@ -34,7 +34,7 @@ const SearchPage = () => {
         </GridItem>
         <GridItem colSpan={{ base: 2, lg: 1 }}>
           <SubSection>
-            <Heading1>Tracks</Heading1>
+            <Heading1 isLoading={isLoading}>Tracks</Heading1>
             <ScrollContainer id="scroll-container" maxHeight="27.45rem">
               <ItemGrid isLoading={isLoading} items={data?.tracks.items} list />
             </ScrollContainer>
@@ -47,7 +47,7 @@ const SearchPage = () => {
         </GridItem>
         <GridItem colSpan={2}>
           <SubSection>
-            <Heading1>Albums</Heading1>
+            <Heading1 isLoading={isLoading}>Albums</Heading1>
             <SearchSwiper paginationDiv="album-swiper">
               {data?.albums.items.map((item) => (
                 <SwiperSlide key={item.id}>
@@ -64,7 +64,7 @@ const SearchPage = () => {
         </GridItem>
         <GridItem colSpan={2}>
           <SubSection>
-            <Heading1>Artists</Heading1>
+            <Heading1 isLoading={isLoading}>Artists</Heading1>
             <SearchSwiper paginationDiv="artist-swiper">
               {data?.artists.items.map((item) => (
                 <SwiperSlide key={item.id}>

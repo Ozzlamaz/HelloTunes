@@ -24,7 +24,9 @@ const RelatedAlbums = ({ artist, isLoading }: Props) => {
 
   return (
     <>
-      <Heading1>{isLoading ? "..." : artist?.name + " albums"}</Heading1>
+      <Heading1 isLoading={isLoading || albumsLoading}>
+        {artist?.name + " albums"}
+      </Heading1>
       <ScrollContainer id="scroll-container-albums" maxHeight="55rem">
         <InfiniteScroll
           dataLength={albumsLoading ? 20 : itemCount}
