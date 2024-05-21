@@ -36,11 +36,7 @@ const SearchPage = () => {
           <SubSection>
             <Heading1>Tracks</Heading1>
             <ScrollContainer id="scroll-container" maxHeight="27.45rem">
-              <ItemGrid list>
-                {data?.tracks.items.map((item) => (
-                  <ItemCard item={item} key={item.id} />
-                ))}
-              </ItemGrid>
+              <ItemGrid items={data?.tracks.items} list />
             </ScrollContainer>
             <ShowMore
               disabled={isLoading}

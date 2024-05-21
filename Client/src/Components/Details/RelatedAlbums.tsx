@@ -1,10 +1,9 @@
-import useRelatedItems from "../../hooks/useRelatedItems";
 import { Artist } from "../../interfaces/Artist";
+import { Album } from "../../interfaces/Album";
+import useRelatedItems from "../../hooks/useRelatedItems";
 import ItemGrid from "../Containers/ItemGrid";
 import Heading1 from "../Heading1";
 import InfiniteScroll from "react-infinite-scroll-component";
-import ItemCard from "../Cards/ItemCard";
-import { Album } from "../../interfaces/Album";
 import ScrollContainer from "../Containers/ScrollContainer";
 
 interface Props {
@@ -26,20 +25,16 @@ const RelatedAlbums = ({ artist, isLoading }: Props) => {
   return (
     <>
       <Heading1>{isLoading ? "..." : artist?.name + " albums"}</Heading1>
-      <ScrollContainer id="scroll-container" maxHeight="55rem">
+      <ScrollContainer id="scroll-container-albums" maxHeight="55rem">
         <InfiniteScroll
           dataLength={albumsLoading ? 20 : itemCount}
           next={fetchNextPage}
           hasMore={hasNextPage}
           loader={<div>...loading</div>}
           endMessage={itemCount < 15 ? null : <div>No More Results</div>}
-          scrollableTarget="scroll-container"
+          scrollableTarget="scroll-container-albums"
         >
-          <ItemGrid>
-            {data?.pages.map((page) =>
-              page.items.map((item) => <ItemCard item={item} key={item.id} />)
-            )}
-          </ItemGrid>
+          <ItemGrid relatedPages={data?.pages} />
         </InfiniteScroll>
       </ScrollContainer>
     </>

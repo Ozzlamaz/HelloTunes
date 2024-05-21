@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 interface Props {
   item?: Album | Artist | Track;
   topResult?: true;
-  details?: true;
+  details?: boolean;
 }
 
 const ItemCard = ({ item, topResult, details }: Props) => {
@@ -23,13 +23,9 @@ const ItemCard = ({ item, topResult, details }: Props) => {
       >
         <CardBody padding={3}>
           {item?.type === "album" ? (
-            <AlbumCardBody details={details} item={item} />
+            <AlbumCardBody item={item} />
           ) : item?.type === "artist" ? (
-            <ArtistCardBody
-              details={details}
-              topResult={topResult}
-              item={item}
-            />
+            <ArtistCardBody topResult={topResult} item={item} />
           ) : item?.type === "track" ? (
             <TrackCardBody details={details} item={item} />
           ) : null}

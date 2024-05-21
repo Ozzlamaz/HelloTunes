@@ -4,7 +4,6 @@ import shortName from "../../services/shortName";
 
 interface Props {
   item: Album;
-  details?: true;
 }
 
 const AlbumCardBody = ({ item }: Props) => {

@@ -5,7 +5,6 @@ import shortName from "../../services/shortName";
 interface Props {
   item: Artist;
   topResult?: true;
-  details?: true;
 }
 
 const ArtistCardBody = ({ item, topResult }: Props) => {

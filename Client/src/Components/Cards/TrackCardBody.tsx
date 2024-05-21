@@ -5,7 +5,7 @@ import shortName from "../../services/shortName";
 
 interface Props {
   item: Track;
-  details?: true;
+  details?: boolean;
 }
 
 const TrackCardBody = ({ item, details }: Props) => {

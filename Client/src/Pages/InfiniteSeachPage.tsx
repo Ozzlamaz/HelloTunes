@@ -4,7 +4,6 @@ import useInfiniteItems from "../hooks/useInfiniteItems";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Section from "../Components/Containers/Section";
 import SubSection from "../Components/Containers/SubSection";
-import ItemCard from "../Components/Cards/ItemCard";
 import Heading1 from "../Components/Heading1";
 import ScrollContainer from "../Components/Containers/ScrollContainer";
 
@@ -33,13 +32,8 @@ const InfiniteSeachPage = () => {
             endMessage={<div>No More Results</div>}
             scrollableTarget="scroll-container"
           >
-            <ItemGrid list={params.type === "track" && true}>
-              {data?.pages.map((page) =>
-                page[`${params.type}s`].items.map((item) => (
-                  <ItemCard key={item.id} item={item} />
-                ))
-              )}
-            </ItemGrid>
+            {/* prettier-ignore*/}
+            <ItemGrid pages={data?.pages} list={params.type === "track" && true}/>
           </InfiniteScroll>
         </ScrollContainer>
       </SubSection>
