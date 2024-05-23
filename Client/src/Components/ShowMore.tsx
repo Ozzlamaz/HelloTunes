@@ -12,6 +12,7 @@ const ShowMore = ({ type, query, disabled }: Props) => {
   return (
     <HStack justifyContent={"end"} marginTop={5}>
       <Button
+        backgroundColor={"blackAlpha.300"}
         isDisabled={disabled}
         onClick={() => {
           navigate(`/search/${type}/${query}`);

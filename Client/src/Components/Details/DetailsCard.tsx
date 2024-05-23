@@ -10,7 +10,7 @@ const DetailsCard = ({ children }: Props) => {
     <Card
       boxShadow={"lg"}
       direction={{ base: "column", md: "row" }}
-      backgroundColor={"blackAlpha.600"}
+      backgroundColor={"blackAlpha.50"}
     >
       {children}
     </Card>

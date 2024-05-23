@@ -11,7 +11,7 @@ const SubSection = ({ children }: Props) => {
       marginY={5}
       marginX={"auto"}
       padding={5}
-      backgroundColor={"blackAlpha.600"}
+      backgroundColor={"blackAlpha.50"}
       borderRadius={5}
     >
       {children}
