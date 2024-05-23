@@ -15,10 +15,10 @@ interface Props {
 const AlbumDetailsCard = ({ album, isLoading }: Props) => {
   if (isLoading) return <SkeletonCard detailsCard />;
   return (
-    <DetailsCard>
+    <DetailsCard imageSrc={album?.images[0].url}>
       <Image
         aspectRatio={1 / 1}
-        height={"21rem"}
+        height={"22rem"}
         margin={"auto"}
         borderRadius={5}
         src={album?.images[1].url}

@@ -16,7 +16,7 @@ const SkeletonCard = ({ list, topResult, detailsCard }: Props) => {
           : topResult
           ? "27.499rem"
           : detailsCard
-          ? "20rem"
+          ? "22rem"
           : "15.54rem"
       }
     />

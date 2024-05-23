@@ -14,10 +14,10 @@ interface Props {
 const ArtistDetailsCard = ({ artist, isLoading }: Props) => {
   if (isLoading) return <SkeletonCard detailsCard />;
   return (
-    <DetailsCard>
+    <DetailsCard imageSrc={artist?.images[0].url}>
       <Image
         aspectRatio={1 / 1}
-        height={"21rem"}
+        height={"22rem"}
         margin={"auto"}
         borderRadius={5}
         src={artist?.images[1].url}
@@ -32,7 +32,7 @@ const ArtistDetailsCard = ({ artist, isLoading }: Props) => {
           {[artist?.popularity]}
         </DetailsHeading>
         <DetailsHeading detail="Followers">
-          {[artist?.followers.total]}
+          {artist ? [parseInt(artist?.followers.total).toLocaleString()] : []}
         </DetailsHeading>
       </CardBody>
     </DetailsCard>
