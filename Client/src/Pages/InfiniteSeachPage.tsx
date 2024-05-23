@@ -4,7 +4,7 @@ import useInfiniteItems from "../hooks/useInfiniteItems";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Section from "../Components/Containers/Section";
 import SubSection from "../Components/Containers/SubSection";
-import Heading1 from "../Components/Heading1";
+import Heading1 from "../Components/Headings/Heading1";
 import ScrollContainer from "../Components/Containers/ScrollContainer";
 
 const InfiniteSeachPage = () => {

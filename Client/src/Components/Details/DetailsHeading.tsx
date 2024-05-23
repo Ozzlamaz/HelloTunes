@@ -1,22 +1,39 @@
-import { Heading } from "@chakra-ui/react";
-import { ReactNode } from "react";
+import { Box, HStack, Heading, Stack, Text } from "@chakra-ui/react";
 
 interface Props {
-  children: ReactNode;
+  children: any[];
+  detail: string;
 }
 
-const DetailsHeading = ({ children }: Props) => {
+const DetailsHeading = ({ children, detail }: Props) => {
   return (
-    <Heading
-      width={"fit-content"}
-      borderRadius={5}
-      padding={1}
-      backgroundColor={"whiteAlpha.500"}
-      marginY={3}
-      as={"h2"}
-      size={"md"}
-    >
-      {children}
+    <Heading marginY={5} as={"h3"} size={"md"}>
+      <HStack alignItems={{ base: "flex-start", sm: "center" }}>
+        <Box minWidth={"9rem"}>
+          <Text padding={1} as={"span"}>
+            {`${detail}: `}
+          </Text>
+        </Box>
+        <Stack
+          width={{ base: "100%", sm: "auto" }}
+          flexDirection={{ base: "column", sm: "row" }}
+          flexWrap={"wrap"}
+        >
+          {children.map((child, index) => (
+            <Text
+              key={child + index}
+              textAlign={"center"}
+              marginX={{ base: "auto", sm: "unset" }}
+              as={"span"}
+              borderRadius={5}
+              backgroundColor={"whiteAlpha.500"}
+              padding={1}
+            >
+              {child}
+            </Text>
+          ))}
+        </Stack>
+      </HStack>
     </Heading>
   );
 };

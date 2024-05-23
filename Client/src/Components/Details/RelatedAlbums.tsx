@@ -2,9 +2,9 @@ import { Artist } from "../../interfaces/Artist";
 import { Album } from "../../interfaces/Album";
 import useRelatedItems from "../../hooks/useRelatedItems";
 import ItemGrid from "../Containers/ItemGrid";
-import Heading1 from "../Heading1";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ScrollContainer from "../Containers/ScrollContainer";
+import Heading2 from "../Headings/Heading2";
 
 interface Props {
   artist?: Artist;
@@ -24,9 +24,9 @@ const RelatedAlbums = ({ artist, isLoading }: Props) => {
 
   return (
     <>
-      <Heading1 isLoading={isLoading || albumsLoading}>
+      <Heading2 isLoading={isLoading || albumsLoading}>
         {artist?.name + " albums"}
-      </Heading1>
+      </Heading2>
       <ScrollContainer id="scroll-container-albums" maxHeight="55rem">
         <InfiniteScroll
           dataLength={albumsLoading ? 20 : itemCount}

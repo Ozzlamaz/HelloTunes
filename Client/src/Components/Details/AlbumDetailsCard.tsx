@@ -1,9 +1,11 @@
-import { CardBody, Heading, Image } from "@chakra-ui/react";
+import { CardBody, Image } from "@chakra-ui/react";
 import { Album } from "../../interfaces/Album";
 import dateFormater from "../../services/dateFormater";
 import DetailsHeading from "./DetailsHeading";
 import DetailsCard from "./DetailsCard";
 import SkeletonCard from "../SkeletonCard";
+import Heading1 from "../Headings/Heading1";
+import Heading3 from "../Headings/Heading3";
 
 interface Props {
   album?: Album;
@@ -16,25 +18,23 @@ const AlbumDetailsCard = ({ album, isLoading }: Props) => {
     <DetailsCard>
       <Image
         aspectRatio={1 / 1}
-        width={320}
+        height={"21rem"}
         margin={"auto"}
         borderRadius={5}
         src={album?.images[1].url}
       />
       <CardBody marginY={"auto"}>
-        <Heading as={"h3"} size={"sm"}>
-          {album?.type}
-        </Heading>
-        <Heading marginY={3} as={"h1"} size={"lg"}>
-          {album?.name}
-        </Heading>
-        <DetailsHeading>
-          Artists: {album?.artists.map((artist) => artist.name).join(", ")}
+        <Heading3 isLoading={isLoading}>{album?.type}</Heading3>
+        <Heading1 isLoading={isLoading}>{album?.name}</Heading1>
+        <DetailsHeading detail="Artist/s">
+          {album?.artists.map((artist) => artist.name) || []}
         </DetailsHeading>
-        <DetailsHeading>Popularity: {album?.popularity}</DetailsHeading>
-        <DetailsHeading>Tracks: {album?.total_tracks}</DetailsHeading>
-        <DetailsHeading>
-          Release Date: {dateFormater(album?.release_date)}
+        <DetailsHeading detail="Popularity">
+          {[album?.popularity]}
+        </DetailsHeading>
+        <DetailsHeading detail="Tracks">{[album?.total_tracks]}</DetailsHeading>
+        <DetailsHeading detail="Release Date">
+          {[dateFormater(album?.release_date)]}
         </DetailsHeading>
       </CardBody>
     </DetailsCard>

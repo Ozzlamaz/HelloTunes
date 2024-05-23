@@ -1,22 +1,23 @@
 import { Heading, SkeletonText } from "@chakra-ui/react";
 
 interface Props {
-  children: string;
+  children?: string;
   isLoading: boolean;
 }
 
-const Heading1 = ({ children, isLoading }: Props) => {
+const Heading3 = ({ children, isLoading }: Props) => {
   return (
     <Heading
       textAlign={{ base: "center", sm: "left" }}
-      marginBottom={5}
-      as={"h1"}
+      size={"md"}
+      marginBottom={3}
+      as={"h3"}
     >
       {isLoading ? (
-        <SkeletonText skeletonHeight={"2.5rem"} width={"12rem"} noOfLines={1} />
+        <SkeletonText skeletonHeight={"2rem"} width={"12rem"} noOfLines={1} />
       ) : (
         children
-          .split(" ")
+          ?.split(" ")
           .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
           .join(" ")
       )}
@@ -24,4 +25,4 @@ const Heading1 = ({ children, isLoading }: Props) => {
   );
 };
 
-export default Heading1;
+export default Heading3;

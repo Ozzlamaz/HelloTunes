@@ -4,6 +4,7 @@ import SkeletonCard from "../SkeletonCard";
 import DetailsCard from "./DetailsCard";
 import DetailsHeading from "./DetailsHeading";
 import durationFormater from "../../services/durationFormater";
+import Heading1 from "../Headings/Heading1";
 
 interface Props {
   track?: Track;
@@ -16,25 +17,29 @@ const TrackDetailsCard = ({ track, isLoading }: Props) => {
     <DetailsCard>
       <Image
         aspectRatio={1 / 1}
-        width={320}
+        height={"21rem"}
         margin={"auto"}
         borderRadius={5}
         src={track?.album.images[1].url}
       />
       <CardBody marginY={"auto"}>
-        <Heading as={"h3"} size={"sm"}>
+        <Heading
+          textAlign={{ base: "center", sm: "left" }}
+          as={"h3"}
+          size={"sm"}
+        >
           {track?.type}
         </Heading>
-        <Heading as={"h1"} size={"lg"}>
-          {track?.name}
-        </Heading>
-        <DetailsHeading>Album: {track?.album.name}</DetailsHeading>
-        <DetailsHeading>
-          Artist/s: {track?.artists.map((artist) => artist.name).join(", ")}
+        <Heading1 isLoading={isLoading}>{track?.name}</Heading1>
+        <DetailsHeading detail="Album">{[track?.album.name]}</DetailsHeading>
+        <DetailsHeading detail="Artist/s">
+          {[track?.artists.map((artist) => artist.name) || []]}
         </DetailsHeading>
-        <DetailsHeading>Popularity: {track?.popularity}</DetailsHeading>
-        <DetailsHeading>
-          Duration: {durationFormater(track?.duration_ms)}
+        <DetailsHeading detail="Popularity">
+          {[track?.popularity]}
+        </DetailsHeading>
+        <DetailsHeading detail="Duration">
+          {[durationFormater(track?.duration_ms)]}
         </DetailsHeading>
       </CardBody>
     </DetailsCard>

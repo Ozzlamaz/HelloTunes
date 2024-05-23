@@ -1,9 +1,9 @@
 import InfiniteScroll from "react-infinite-scroll-component";
 import useRelatedItems from "../../hooks/useRelatedItems";
-import Heading1 from "../Heading1";
 import ItemGrid from "../Containers/ItemGrid";
 import { Track } from "../../interfaces/Track";
 import ScrollContainer from "../Containers/ScrollContainer";
+import Heading2 from "../Headings/Heading2";
 
 interface Props {
   track?: Track;
@@ -22,9 +22,9 @@ const RelatedTracks = ({ track, isLoading }: Props) => {
     data?.pages.reduce((total, page) => total + page.items.length, 0) || 0;
   return (
     <>
-      <Heading1 isLoading={isLoading || tracksLoading}>
+      <Heading2 isLoading={isLoading || tracksLoading}>
         {track?.album.name + " tracks"}
-      </Heading1>
+      </Heading2>
       <ScrollContainer id="scroll-container-tracks" maxHeight="55rem">
         <InfiniteScroll
           dataLength={tracksLoading ? 20 : itemCount}

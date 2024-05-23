@@ -2,7 +2,7 @@ import Carousel from "./Carousel";
 import ItemCarousel from "./ItemCarousel";
 import { ResponseData } from "../../interfaces/ResponseData";
 import Section from "../Containers/Section";
-import Heading1 from "../Heading1";
+import Heading1 from "../Headings/Heading1";
 
 interface Props {
   data?: ResponseData;

@@ -3,7 +3,7 @@ import ItemGrid from "../Components/Containers/ItemGrid";
 import Section from "../Components/Containers/Section";
 import { Album } from "../interfaces/Album";
 import RelatedAlbums from "../Components/Details/RelatedAlbums";
-import Heading1 from "../Components/Heading1";
+import Heading1 from "../Components/Headings/Heading1";
 import SubSection from "../Components/Containers/SubSection";
 import { useParams } from "react-router-dom";
 import useItemDetails from "../hooks/useItemDetails";
@@ -19,9 +19,16 @@ const AlbumDetailsPage = () => {
       </Section>
       <Section maxW={"6xl"}>
         <SubSection>
-          <Heading1>{isLoading ? "..." : album?.name + " Tracks"}</Heading1>
+          <Heading1 isLoading={isLoading}>
+            {isLoading ? "..." : album?.name + " Tracks"}
+          </Heading1>
           <ScrollContainer id="scroll-container-tracks" maxHeight="55rem">
-            <ItemGrid details items={album?.tracks.items} list />
+            <ItemGrid
+              isLoading={isLoading}
+              details
+              items={album?.tracks.items}
+              list
+            />
           </ScrollContainer>
         </SubSection>
         <SubSection>

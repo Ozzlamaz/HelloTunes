@@ -5,12 +5,13 @@ import ItemGrid from "../Components/Containers/ItemGrid";
 import ShowMore from "../Components/ShowMore";
 import TopResultCard from "../Components/Cards/TopResultCard";
 import Section from "../Components/Containers/Section";
-import Heading1 from "../Components/Heading1";
+import Heading1 from "../Components/Headings/Heading1";
 import SubSection from "../Components/Containers/SubSection";
 import ItemCard from "../Components/Cards/ItemCard";
 import { SwiperSlide } from "swiper/react";
 import SearchSwiper from "../Components/Swiper/SearchSwiper";
 import ScrollContainer from "../Components/Containers/ScrollContainer";
+import Heading2 from "../Components/Headings/Heading2";
 
 const SearchPage = () => {
   const params = useParams();
@@ -18,6 +19,7 @@ const SearchPage = () => {
 
   return (
     <Section>
+      <Heading1 isLoading={isLoading}>{params.q}</Heading1>
       <Grid
         gridGap={5}
         templateRows={"auto auto auto"}
@@ -25,7 +27,7 @@ const SearchPage = () => {
       >
         <GridItem colSpan={{ base: 2, lg: 1 }}>
           <SubSection>
-            <Heading1 isLoading={isLoading}>Top Result</Heading1>
+            <Heading2 isLoading={isLoading}>Top Result</Heading2>
             <TopResultCard
               isLoading={isLoading}
               item={data?.artists.items[0]}
@@ -34,7 +36,7 @@ const SearchPage = () => {
         </GridItem>
         <GridItem colSpan={{ base: 2, lg: 1 }}>
           <SubSection>
-            <Heading1 isLoading={isLoading}>Tracks</Heading1>
+            <Heading2 isLoading={isLoading}>Tracks</Heading2>
             <ScrollContainer id="scroll-container" maxHeight="27.45rem">
               <ItemGrid isLoading={isLoading} items={data?.tracks.items} list />
             </ScrollContainer>
@@ -47,7 +49,7 @@ const SearchPage = () => {
         </GridItem>
         <GridItem colSpan={2}>
           <SubSection>
-            <Heading1 isLoading={isLoading}>Albums</Heading1>
+            <Heading2 isLoading={isLoading}>Albums</Heading2>
             <SearchSwiper paginationDiv="album-swiper">
               {data?.albums.items.map((item) => (
                 <SwiperSlide key={item.id}>
@@ -64,7 +66,7 @@ const SearchPage = () => {
         </GridItem>
         <GridItem colSpan={2}>
           <SubSection>
-            <Heading1 isLoading={isLoading}>Artists</Heading1>
+            <Heading2 isLoading={isLoading}>Artists</Heading2>
             <SearchSwiper paginationDiv="artist-swiper">
               {data?.artists.items.map((item) => (
                 <SwiperSlide key={item.id}>

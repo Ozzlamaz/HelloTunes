@@ -1,8 +1,10 @@
-import { CardBody, Heading, Image } from "@chakra-ui/react";
+import { CardBody, Image } from "@chakra-ui/react";
 import { Artist } from "../../interfaces/Artist";
 import SkeletonCard from "../SkeletonCard";
 import DetailsCard from "./DetailsCard";
 import DetailsHeading from "./DetailsHeading";
+import Heading1 from "../Headings/Heading1";
+import Heading3 from "../Headings/Heading3";
 
 interface Props {
   artist?: Artist;
@@ -15,23 +17,23 @@ const ArtistDetailsCard = ({ artist, isLoading }: Props) => {
     <DetailsCard>
       <Image
         aspectRatio={1 / 1}
-        width={320}
+        height={"21rem"}
         margin={"auto"}
         borderRadius={5}
         src={artist?.images[1].url}
       />
       <CardBody marginY={"auto"}>
-        <Heading as={"h3"} size={"sm"}>
-          {artist?.type}
-        </Heading>
-        <Heading as={"h1"} size={"lg"}>
-          {artist?.name}
-        </Heading>
-        <DetailsHeading>
-          Genres: {artist?.genres.join(", ") || "Unknown"}
+        <Heading3 isLoading={isLoading}>{artist?.type}</Heading3>
+        <Heading1 isLoading={isLoading}>{artist?.name}</Heading1>
+        <DetailsHeading detail="Genres">
+          {artist?.genres || ["Unknown"]}
         </DetailsHeading>
-        <DetailsHeading>Popularity: {artist?.popularity}</DetailsHeading>
-        <DetailsHeading>Followers: {artist?.followers.total}</DetailsHeading>
+        <DetailsHeading detail="Popularity">
+          {[artist?.popularity]}
+        </DetailsHeading>
+        <DetailsHeading detail="Followers">
+          {[artist?.followers.total]}
+        </DetailsHeading>
       </CardBody>
     </DetailsCard>
   );
