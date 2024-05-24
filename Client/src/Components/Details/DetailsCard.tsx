@@ -14,8 +14,8 @@ const DetailsCard = ({ children, imageSrc }: Props) => {
   const gradient = {
     color:
       colorMode === "light"
-        ? `${theme.colors.whiteAlpha[900]}, ${theme.colors.whiteAlpha[500]}`
-        : `${theme.colors.blackAlpha[900]}, ${theme.colors.blackAlpha[500]}`,
+        ? `${theme.colors.whiteAlpha[900]}, ${theme.colors.whiteAlpha[800]}, ${theme.colors.whiteAlpha[500]}`
+        : `${theme.colors.blackAlpha[900]}, ${theme.colors.blackAlpha[800]}, ${theme.colors.blackAlpha[500]}`,
     direction: largerThan768 ? "to right" : "to top",
   };
 
