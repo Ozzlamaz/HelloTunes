@@ -1,15 +1,18 @@
-import { Box } from "@chakra-ui/react";
-import AlbumsCarousel from "../Components/Carousel/AlbumsCarousel";
+import NewAlbums from "../Components/Carousel/NewAlbums";
 import useItems from "../hooks/useItems";
+import Section from "../Components/Containers/Section";
+import SubSection from "../Components/Containers/SubSection";
 
 const HomePage = () => {
   const params = { q: "tag:new", type: "album" };
-  const { data, isLoading } = useItems(params);
+  const { data: newAlbums, isLoading } = useItems(params);
 
   return (
-    <Box marginY={5}>
-      <AlbumsCarousel isLoading={isLoading} data={data} />
-    </Box>
+    <Section>
+      <SubSection>
+        <NewAlbums isLoading={isLoading} data={newAlbums} />
+      </SubSection>
+    </Section>
   );
 };
 

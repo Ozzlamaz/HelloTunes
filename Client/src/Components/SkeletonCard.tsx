@@ -4,9 +4,10 @@ interface Props {
   detailsCard?: boolean;
   list?: boolean;
   topResult?: boolean;
+  carousel?: boolean;
 }
 
-const SkeletonCard = ({ list, topResult, detailsCard }: Props) => {
+const SkeletonCard = ({ list, topResult, detailsCard, carousel }: Props) => {
   return (
     <Skeleton
       borderRadius={5}
@@ -17,6 +18,8 @@ const SkeletonCard = ({ list, topResult, detailsCard }: Props) => {
           ? "27.499rem"
           : detailsCard
           ? "22rem"
+          : carousel
+          ? "40rem"
           : "15.54rem"
       }
     />
