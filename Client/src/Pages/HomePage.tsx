@@ -4,11 +4,11 @@ import useItems from "../hooks/useItems";
 
 const HomePage = () => {
   const params = { q: "tag:new", type: "album" };
-  const { data } = useItems(params);
+  const { data, isLoading } = useItems(params);
 
   return (
     <Box marginY={5}>
-      <AlbumsCarousel data={data} />
+      <AlbumsCarousel isLoading={isLoading} data={data} />
     </Box>
   );
 };
