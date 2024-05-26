@@ -36,7 +36,9 @@ const SearchPage = () => {
         </GridItem>
         <GridItem colSpan={{ base: 2, lg: 1 }}>
           <SubSection>
-            <Heading2 isLoading={isLoading}>Tracks</Heading2>
+            <Heading2 paddingX={5} isLoading={isLoading}>
+              Tracks
+            </Heading2>
             <ScrollContainer id="scroll-container" maxHeight="27.45rem">
               <ItemGrid isLoading={isLoading} items={data?.tracks.items} list />
             </ScrollContainer>

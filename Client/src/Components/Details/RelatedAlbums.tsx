@@ -24,7 +24,7 @@ const RelatedAlbums = ({ artist, isLoading }: Props) => {
 
   return (
     <>
-      <Heading2 isLoading={isLoading || albumsLoading}>
+      <Heading2 paddingX={5} isLoading={isLoading || albumsLoading}>
         {artist?.name + " albums"}
       </Heading2>
       <ScrollContainer id="scroll-container-albums" maxHeight="55rem">

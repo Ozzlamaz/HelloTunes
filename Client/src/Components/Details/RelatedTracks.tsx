@@ -22,7 +22,7 @@ const RelatedTracks = ({ track, isLoading }: Props) => {
     data?.pages.reduce((total, page) => total + page.items.length, 0) || 0;
   return (
     <>
-      <Heading2 isLoading={isLoading || tracksLoading}>
+      <Heading2 paddingX={5} isLoading={isLoading || tracksLoading}>
         {track?.album.name + " tracks"}
       </Heading2>
       <ScrollContainer id="scroll-container-tracks" maxHeight="55rem">

@@ -3,11 +3,11 @@ import ItemGrid from "../Components/Containers/ItemGrid";
 import Section from "../Components/Containers/Section";
 import { Album } from "../interfaces/Album";
 import RelatedAlbums from "../Components/Details/RelatedAlbums";
-import Heading1 from "../Components/Headings/Heading1";
 import SubSection from "../Components/Containers/SubSection";
 import { useParams } from "react-router-dom";
 import useItemDetails from "../hooks/useItemDetails";
 import ScrollContainer from "../Components/Containers/ScrollContainer";
+import Heading2 from "../Components/Headings/Heading2";
 
 const AlbumDetailsPage = () => {
   const { id } = useParams();
@@ -19,9 +19,9 @@ const AlbumDetailsPage = () => {
       </Section>
       <Section maxW={"6xl"}>
         <SubSection>
-          <Heading1 isLoading={isLoading}>
+          <Heading2 paddingX={5} isLoading={isLoading}>
             {isLoading ? "..." : album?.name + " Tracks"}
-          </Heading1>
+          </Heading2>
           <ScrollContainer id="scroll-container-tracks" maxHeight="55rem">
             <ItemGrid
               isLoading={isLoading}
