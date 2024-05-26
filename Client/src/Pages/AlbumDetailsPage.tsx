@@ -20,7 +20,7 @@ const AlbumDetailsPage = () => {
       <Section maxW={"6xl"}>
         <SubSection>
           <Heading2 paddingX={5} isLoading={isLoading}>
-            {isLoading ? "..." : album?.name + " Tracks"}
+            {album?.name + " Tracks"}
           </Heading2>
           <ScrollContainer id="scroll-container-tracks" maxHeight="55rem">
             <ItemGrid

@@ -8,16 +8,18 @@ import Heading2 from "../Headings/Heading2";
 
 interface Props {
   artist?: Artist;
+  album?: Album;
   isLoading: boolean;
 }
 
-const RelatedAlbums = ({ artist, isLoading }: Props) => {
+const RelatedAlbums = ({ artist, album, isLoading }: Props) => {
+  const relatableId = artist?.id || album?.artists[0].id;
   const {
     data,
     isLoading: albumsLoading,
     hasNextPage,
     fetchNextPage,
-  } = useRelatedItems<Album>("artists", artist?.id, "albums");
+  } = useRelatedItems<Album>("artists", relatableId, "albums");
 
   const itemCount =
     data?.pages.reduce((total, page) => total + page.items.length, 0) || 0;
@@ -39,6 +41,7 @@ const RelatedAlbums = ({ artist, isLoading }: Props) => {
           <ItemGrid
             isLoading={isLoading || albumsLoading}
             relatedPages={data?.pages}
+            relatableId={relatableId}
           />
         </InfiniteScroll>
       </ScrollContainer>

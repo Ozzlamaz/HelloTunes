@@ -38,6 +38,7 @@ const RelatedTracks = ({ track, isLoading }: Props) => {
             isLoading={isLoading || tracksLoading}
             details
             relatedPages={data?.pages}
+            relatableId={track?.id}
             list
           />
         </InfiniteScroll>

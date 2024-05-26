@@ -12,6 +12,7 @@ interface Props {
   pages?: InfiniteResponseData<Album | Artist | Track>[];
   relatedPages?: RelatedItemsRes<Album | Artist | Track>[];
   list?: boolean;
+  relatableId?: string;
   details?: boolean;
   isLoading: boolean;
 }
@@ -21,10 +22,12 @@ const ItemGrid = ({
   items,
   pages,
   relatedPages,
+  relatableId,
   details,
   isLoading,
 }: Props) => {
   const skelArray = Array.from({ length: 20 }, (_, index) => index + 1);
+
   return (
     <SimpleGrid
       spacing={5}
@@ -32,21 +35,27 @@ const ItemGrid = ({
     >
       {!isLoading
         ? // prettier-ignore
-          items?.map(item => 
-          <ItemCard details={details} key={item.id} item={item}/>) 
-          ||
-        // prettier-ignore
-        pages?.map(page => 
-          Object.values(page)[0].items.map(item => 
-          <ItemCard details={details} key={item.id} item={item}/>)) 
-          ||
-        // prettier-ignore
-        relatedPages?.map(page => 
-          page.items.map(item => 
-          <ItemCard details={details} key={item.id} item={item}/>))
+          items
+        ?.filter(item => item.id !== relatableId)
+        .map(item => 
+        <ItemCard details={details} key={item.id} item={item}/>) 
+        ||
+      // prettier-ignore
+      pages?.map(page => 
+        Object.values(page)[0].items // this case, page only has one property but we don't know if its albums, artists or tracks
+        .filter(item => item.id !== relatableId)
+        .map(item => 
+        <ItemCard details={details} key={item.id} item={item}/>)) 
+        ||
+      // prettier-ignore
+      relatedPages?.map(page => 
+        page.items
+        .filter(item => item.id !== relatableId)
+        .map(item => 
+        <ItemCard details={details} key={item.id} item={item}/>))
         : // prettier-ignore
           skelArray?.map(each =>
-          <SkeletonCard key={each} list={list} />)}
+        <SkeletonCard key={each} list={list} />)}
     </SimpleGrid>
   );
 };
