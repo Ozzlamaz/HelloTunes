@@ -52,7 +52,7 @@ const SearchPage = () => {
         <GridItem colSpan={2}>
           <SubSection>
             <Heading2 isLoading={isLoading}>Albums</Heading2>
-            <SearchSwiper paginationDiv="album-swiper">
+            <SearchSwiper isLoading={isLoading} paginationDiv="album-swiper">
               {data?.albums.items.map((item) => (
                 <SwiperSlide key={item.id}>
                   <ItemCard item={item} />
@@ -69,7 +69,7 @@ const SearchPage = () => {
         <GridItem colSpan={2}>
           <SubSection>
             <Heading2 isLoading={isLoading}>Artists</Heading2>
-            <SearchSwiper paginationDiv="artist-swiper">
+            <SearchSwiper isLoading={isLoading} paginationDiv="artist-swiper">
               {data?.artists.items.map((item) => (
                 <SwiperSlide key={item.id}>
                   <ItemCard item={item} />

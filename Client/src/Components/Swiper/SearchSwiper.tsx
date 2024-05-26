@@ -1,21 +1,17 @@
 import { Box } from "@chakra-ui/react";
-import { Swiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import { ReactNode } from "react";
+import SkeletonCard from "../SkeletonCard";
 
 interface Props {
   children: ReactNode;
   paginationDiv: string;
-  direction?: string;
+  isLoading: boolean;
 }
 
-const SearchSwiper = ({
-  children,
-  paginationDiv,
-  direction = "horizontal",
-}: Props) => {
+const SearchSwiper = ({ children, paginationDiv, isLoading }: Props) => {
   const swiperconfig = {
-    direction,
     modules: [Pagination],
     pagination: { clickable: true, el: `.${paginationDiv}` },
     slidesPerView: 1,
@@ -40,10 +36,20 @@ const SearchSwiper = ({
     },
   };
 
+  const skelArray = Array.from({ length: 20 }, (_, index) => index + 1);
+
   return (
     <>
       <Box marginY={5} className={paginationDiv} />
-      <Swiper {...swiperconfig}>{children}</Swiper>
+      <Swiper {...swiperconfig}>
+        {isLoading
+          ? skelArray.map((skel, index) => (
+              <SwiperSlide key={skel + index}>
+                <SkeletonCard swiperGrid />
+              </SwiperSlide>
+            ))
+          : children}
+      </Swiper>
     </>
   );
 };
