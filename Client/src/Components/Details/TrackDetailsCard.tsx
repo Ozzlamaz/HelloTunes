@@ -33,7 +33,7 @@ const TrackDetailsCard = ({ track, isLoading }: Props) => {
         <Heading1 isLoading={isLoading}>{track?.name}</Heading1>
         <DetailsHeading detail="Album">{[track?.album.name]}</DetailsHeading>
         <DetailsHeading detail="Artist/s">
-          {[track?.artists.map((artist) => artist.name) || []]}
+          {track?.artists.map((artist) => artist.name) || []}
         </DetailsHeading>
         <DetailsHeading detail="Popularity">
           {[track?.popularity]}
