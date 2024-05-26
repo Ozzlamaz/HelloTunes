@@ -18,12 +18,12 @@ const AlbumDetailsCard = ({ album, isLoading }: Props) => {
     <DetailsCard imageSrc={album?.images[0].url}>
       <Image
         aspectRatio={1 / 1}
-        height={"22rem"}
+        height={"20rem"}
         margin={"auto"}
         borderRadius={5}
         src={album?.images[1].url}
       />
-      <CardBody marginY={"auto"}>
+      <CardBody>
         <Heading3 isLoading={isLoading}>{album?.type}</Heading3>
         <Heading1 isLoading={isLoading}>{album?.name}</Heading1>
         <DetailsHeading detail="Artist/s">

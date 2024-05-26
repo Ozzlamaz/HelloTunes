@@ -7,7 +7,7 @@ interface Props {
 
 const DetailsHeading = ({ children, detail }: Props) => {
   return (
-    <Heading marginY={5} as={"h3"} size={"md"}>
+    <Heading marginY={3} as={"h3"} size={"md"}>
       <HStack alignItems="flex-start">
         <Box paddingY={0.5} minWidth={"9rem"}>
           <Text as={"span"}>{`${detail}: `}</Text>

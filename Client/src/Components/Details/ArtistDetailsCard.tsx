@@ -17,7 +17,7 @@ const ArtistDetailsCard = ({ artist, isLoading }: Props) => {
     <DetailsCard imageSrc={artist?.images[0].url}>
       <Image
         aspectRatio={1 / 1}
-        height={"22rem"}
+        height={"20rem"}
         margin={"auto"}
         borderRadius={5}
         src={artist?.images[1].url}

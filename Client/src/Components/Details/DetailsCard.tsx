@@ -23,7 +23,6 @@ const DetailsCard = ({ children, imageSrc }: Props) => {
     <Card
       boxShadow={"lg"}
       direction={{ base: "column", md: "row" }}
-      // backgroundColor={"blackAlpha.50"}
       backgroundImage={`linear-gradient(${gradient.direction}, ${gradient.color}) , url(${imageSrc})`}
       bgSize="cover"
       bgRepeat={"no-repeat"}
