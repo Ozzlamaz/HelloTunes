@@ -13,6 +13,7 @@ const useRelatedItems = <T>(
       getData(`${relatedType!}/${relatedId}/${relatedItems}`, {
         params: { offset: pageParam },
       }),
+    enabled: relatedId ? true : false,
     staleTime: 8 * 60 * 60 * 1000, // 8h,
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages) =>
