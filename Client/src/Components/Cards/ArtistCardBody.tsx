@@ -1,6 +1,6 @@
-import { Box, Heading, Image, Tooltip } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 import { Artist } from "../../interfaces/Artist";
-import shortName from "../../services/shortName";
+import CardHeading from "./CardHeading";
 
 interface Props {
   item: Artist;
@@ -19,15 +19,13 @@ const ArtistCardBody = ({ item, topResult }: Props) => {
         src={topResult ? item.images[0]?.url : item.images[1]?.url}
       />
       <Box paddingY={3}>
-        <Tooltip label={item.name}>
-          <Heading
-            textAlign={"center"}
-            fontSize={topResult ? 32 : 16}
-            as={"h2"}
-          >
-            {shortName(item.name)}
-          </Heading>
-        </Tooltip>
+        <CardHeading
+          textAlign={"center"}
+          size={topResult ? "lg" : "sm"}
+          as={"h2"}
+        >
+          {item.name}
+        </CardHeading>
       </Box>
     </>
   );

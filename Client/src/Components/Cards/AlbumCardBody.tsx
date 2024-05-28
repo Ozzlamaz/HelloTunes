@@ -1,6 +1,6 @@
-import { Box, Heading, Image, Tooltip } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 import { Album } from "../../interfaces/Album";
-import shortName from "../../services/shortName";
+import CardHeading from "./CardHeading";
 
 interface Props {
   item: Album;
@@ -18,11 +18,9 @@ const AlbumCardBody = ({ item }: Props) => {
         src={item.images[1].url}
       />
       <Box paddingY={3}>
-        <Tooltip label={item?.name}>
-          <Heading textAlign={"center"} fontSize={16} as={"h2"}>
-            {shortName(item.name)}
-          </Heading>
-        </Tooltip>
+        <CardHeading textAlign={"center"} size="sm" as={"h2"}>
+          {item.name}
+        </CardHeading>
       </Box>
     </>
   );
