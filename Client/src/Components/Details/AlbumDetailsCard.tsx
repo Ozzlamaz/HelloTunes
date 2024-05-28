@@ -19,6 +19,7 @@ const AlbumDetailsCard = ({ album, isLoading }: Props) => {
       <Image
         aspectRatio={1 / 1}
         height={"20rem"}
+        objectFit={"cover"}
         margin={"auto"}
         borderRadius={5}
         src={album?.images[1].url}
