@@ -5,6 +5,7 @@ import DetailsCard from "./DetailsCard";
 import DetailsHeading from "./DetailsHeading";
 import durationFormater from "../../services/durationFormater";
 import Heading1 from "../Headings/Heading1";
+import PHTrack from "../../assets/placeholders/PHTrack.webp";
 
 interface Props {
   track?: Track;
@@ -14,7 +15,7 @@ interface Props {
 const TrackDetailsCard = ({ track, isLoading }: Props) => {
   if (isLoading) return <SkeletonCard detailsCard />;
   return (
-    <DetailsCard imageSrc={track?.album.images[0].url}>
+    <DetailsCard imageSrc={track?.album.images[0].url || PHTrack}>
       <Image
         aspectRatio={1 / 1}
         height={"20rem"}
@@ -22,6 +23,9 @@ const TrackDetailsCard = ({ track, isLoading }: Props) => {
         margin={"auto"}
         borderRadius={5}
         src={track?.album.images[1].url}
+        background={`url(${PHTrack})`}
+        bgSize={"cover"}
+        alt={track?.name}
       />
       <CardBody marginY={"auto"}>
         <Heading

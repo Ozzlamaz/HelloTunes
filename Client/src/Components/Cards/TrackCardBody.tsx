@@ -2,13 +2,14 @@ import { Box, Image, Text, HStack } from "@chakra-ui/react";
 import { Track } from "../../interfaces/Track";
 import durationFormater from "../../services/durationFormater";
 import CardHeading from "./CardHeading";
+import PHTrack from "../../assets/placeholders/PHTrack.webp";
 
 interface Props {
-  item: Track;
+  track: Track;
   details?: boolean;
 }
 
-const TrackCardBody = ({ item, details }: Props) => {
+const TrackCardBody = ({ track, details }: Props) => {
   return (
     <HStack height={"3em"} justifyContent={"space-between"}>
       <HStack overflow={"hidden"}>
@@ -18,22 +19,25 @@ const TrackCardBody = ({ item, details }: Props) => {
             aspectRatio={1 / 1}
             objectFit={"cover"}
             height={"3em"}
-            src={item.album.images[2].url}
+            src={track.album.images[2].url}
+            background={`url(${PHTrack})`}
+            bgSize={"cover"}
+            alt={track.name}
           />
         )}
         <Box overflow={"hidden"}>
           <CardHeading size={"sm"} as={"h2"}>
-            {item.name}
+            {track.name}
           </CardHeading>
           {!details && (
             <CardHeading as={"h3"} size={"sm"} color={"gray.500"}>
-              {item.artists[0].name}
+              {track.artists[0].name}
             </CardHeading>
           )}
         </Box>
       </HStack>
       <Text as={"span"} fontWeight={"bold"}>
-        {durationFormater(item.duration_ms)}
+        {durationFormater(track.duration_ms)}
       </Text>
     </HStack>
   );

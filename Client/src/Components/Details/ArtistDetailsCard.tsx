@@ -5,6 +5,7 @@ import DetailsCard from "./DetailsCard";
 import DetailsHeading from "./DetailsHeading";
 import Heading1 from "../Headings/Heading1";
 import Heading3 from "../Headings/Heading3";
+import PHArtist from "../../assets/placeholders/PHArtist.webp";
 
 interface Props {
   artist?: Artist;
@@ -14,7 +15,7 @@ interface Props {
 const ArtistDetailsCard = ({ artist, isLoading }: Props) => {
   if (isLoading) return <SkeletonCard detailsCard />;
   return (
-    <DetailsCard imageSrc={artist?.images[0].url}>
+    <DetailsCard imageSrc={artist?.images[0].url || PHArtist}>
       <Image
         aspectRatio={1 / 1}
         height={"20rem"}
@@ -22,6 +23,9 @@ const ArtistDetailsCard = ({ artist, isLoading }: Props) => {
         margin={"auto"}
         borderRadius={5}
         src={artist?.images[1].url}
+        background={`url(${PHArtist})`}
+        bgSize={"cover"}
+        alt={artist?.name}
       />
       <CardBody marginY={"auto"}>
         <Heading3 isLoading={isLoading}>{artist?.type}</Heading3>

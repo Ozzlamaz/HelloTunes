@@ -1,13 +1,14 @@
 import { Box, Image } from "@chakra-ui/react";
 import { Artist } from "../../interfaces/Artist";
 import CardHeading from "./CardHeading";
+import PHArtist from "../../assets/placeholders/PHArtist.webp";
 
 interface Props {
-  item: Artist;
+  artist: Artist;
   topResult?: true;
 }
 
-const ArtistCardBody = ({ item, topResult }: Props) => {
+const ArtistCardBody = ({ artist, topResult }: Props) => {
   return (
     <>
       <Image
@@ -16,7 +17,10 @@ const ArtistCardBody = ({ item, topResult }: Props) => {
         marginX={"auto"}
         objectFit={"cover"}
         borderRadius={"10%"}
-        src={topResult ? item.images[0]?.url : item.images[1]?.url}
+        src={topResult ? artist.images[0]?.url : artist.images[1]?.url}
+        background={`url(${PHArtist})`}
+        bgSize={"cover"}
+        alt={artist.name}
       />
       <Box paddingY={3}>
         <CardHeading
@@ -24,7 +28,7 @@ const ArtistCardBody = ({ item, topResult }: Props) => {
           size={topResult ? "lg" : "sm"}
           as={"h2"}
         >
-          {item.name}
+          {artist.name}
         </CardHeading>
       </Box>
     </>

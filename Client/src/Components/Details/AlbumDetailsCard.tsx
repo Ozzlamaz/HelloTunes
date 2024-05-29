@@ -6,6 +6,7 @@ import DetailsCard from "./DetailsCard";
 import SkeletonCard from "../SkeletonCard";
 import Heading1 from "../Headings/Heading1";
 import Heading3 from "../Headings/Heading3";
+import PHAlbum from "../../assets/placeholders/PHAlbum.webp";
 
 interface Props {
   album?: Album;
@@ -15,7 +16,7 @@ interface Props {
 const AlbumDetailsCard = ({ album, isLoading }: Props) => {
   if (isLoading) return <SkeletonCard detailsCard />;
   return (
-    <DetailsCard imageSrc={album?.images[0].url}>
+    <DetailsCard imageSrc={album?.images[0].url || PHAlbum}>
       <Image
         aspectRatio={1 / 1}
         height={"20rem"}
@@ -23,6 +24,9 @@ const AlbumDetailsCard = ({ album, isLoading }: Props) => {
         margin={"auto"}
         borderRadius={5}
         src={album?.images[1].url}
+        background={`url(${PHAlbum})`}
+        bgSize={"cover"}
+        alt={album?.name}
       />
       <CardBody>
         <Heading3 isLoading={isLoading}>{album?.type}</Heading3>

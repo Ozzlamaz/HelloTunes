@@ -1,12 +1,13 @@
 import { Box, Image } from "@chakra-ui/react";
 import { Album } from "../../interfaces/Album";
 import CardHeading from "./CardHeading";
+import PHAlbum from "../../assets/placeholders/PHAlbum.webp";
 
 interface Props {
-  item: Album;
+  album: Album;
 }
 
-const AlbumCardBody = ({ item }: Props) => {
+const AlbumCardBody = ({ album }: Props) => {
   return (
     <>
       <Image
@@ -15,11 +16,14 @@ const AlbumCardBody = ({ item }: Props) => {
         marginX={"auto"}
         objectFit={"cover"}
         borderRadius={"50%"}
-        src={item.images[1].url}
+        src={album.images[1].url}
+        background={`url(${PHAlbum})`}
+        bgSize={"cover"}
+        alt={album.name}
       />
       <Box paddingY={3}>
         <CardHeading textAlign={"center"} size="sm" as={"h2"}>
-          {item.name}
+          {album.name}
         </CardHeading>
       </Box>
     </>

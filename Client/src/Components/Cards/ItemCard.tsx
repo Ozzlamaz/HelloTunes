@@ -23,11 +23,11 @@ const ItemCard = ({ item, topResult, details }: Props) => {
       >
         <CardBody padding={3}>
           {item?.type === "album" ? (
-            <AlbumCardBody item={item} />
+            <AlbumCardBody album={item} />
           ) : item?.type === "artist" ? (
-            <ArtistCardBody topResult={topResult} item={item} />
+            <ArtistCardBody topResult={topResult} artist={item} />
           ) : item?.type === "track" ? (
-            <TrackCardBody details={details} item={item} />
+            <TrackCardBody details={details} track={item} />
           ) : null}
         </CardBody>
       </Card>
