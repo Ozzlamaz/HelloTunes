@@ -15,34 +15,37 @@ interface Props {
 
 const AlbumDetailsCard = ({ album, isLoading }: Props) => {
   if (isLoading) return <SkeletonCard detailsCard />;
-  return (
-    <DetailsCard imageSrc={album?.images[0].url || PHAlbum}>
-      <Image
-        aspectRatio={1 / 1}
-        height={"20rem"}
-        objectFit={"cover"}
-        margin={"auto"}
-        borderRadius={5}
-        src={album?.images[1].url}
-        background={`url(${PHAlbum})`}
-        bgSize={"cover"}
-        alt={album?.name}
-      />
-      <CardBody>
-        <Heading3 isLoading={isLoading}>{album?.type}</Heading3>
-        <Heading1 isLoading={isLoading}>{album?.name}</Heading1>
-        <DetailsHeading detail="Artist/s">
-          {album?.artists.map((artist) => artist.name) || []}
-        </DetailsHeading>
-        <DetailsHeading detail="Popularity">
-          {[album?.popularity]}
-        </DetailsHeading>
-        <DetailsHeading detail="Tracks">{[album?.total_tracks]}</DetailsHeading>
-        <DetailsHeading detail="Release Date">
-          {[dateFormater(album?.release_date)]}
-        </DetailsHeading>
-      </CardBody>
-    </DetailsCard>
-  );
+  if (album)
+    return (
+      <DetailsCard imageSrc={album.images[0]?.url || PHAlbum}>
+        <Image
+          aspectRatio={1 / 1}
+          height={"20rem"}
+          objectFit={"cover"}
+          margin={"auto"}
+          borderRadius={5}
+          src={album.images[1]?.url}
+          background={`url(${PHAlbum})`}
+          bgSize={"cover"}
+          alt={""}
+        />
+        <CardBody>
+          <Heading3 isLoading={isLoading}>{album?.type}</Heading3>
+          <Heading1 isLoading={isLoading}>{album?.name}</Heading1>
+          <DetailsHeading detail="Artist/s">
+            {album.artists.map((artist) => artist.name) || []}
+          </DetailsHeading>
+          <DetailsHeading detail="Popularity">
+            {[album.popularity]}
+          </DetailsHeading>
+          <DetailsHeading detail="Tracks">
+            {[album.total_tracks]}
+          </DetailsHeading>
+          <DetailsHeading detail="Release Date">
+            {[dateFormater(album.release_date)]}
+          </DetailsHeading>
+        </CardBody>
+      </DetailsCard>
+    );
 };
 export default AlbumDetailsCard;

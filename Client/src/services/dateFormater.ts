@@ -1,3 +1,5 @@
+//returns dd-mm-yy format
+
 const dateFormater = (date: string | undefined) => {
   if (!date) return "0-0-0";
   const splitDate = date.split("-");

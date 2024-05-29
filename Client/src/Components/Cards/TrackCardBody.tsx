@@ -19,10 +19,10 @@ const TrackCardBody = ({ track, details }: Props) => {
             aspectRatio={1 / 1}
             objectFit={"cover"}
             height={"3em"}
-            src={track.album.images[2].url}
+            src={track.album.images[2]?.url}
             background={`url(${PHTrack})`}
             bgSize={"cover"}
-            alt={track.name}
+            alt={""}
           />
         )}
         <Box overflow={"hidden"}>

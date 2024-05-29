@@ -1,3 +1,5 @@
+// returns duration from ms to mm:ss
+
 const durationFormater = (duration: number | undefined) => {
   if (!duration) return;
   let duration_M = Math.floor(duration / 1000 / 60)

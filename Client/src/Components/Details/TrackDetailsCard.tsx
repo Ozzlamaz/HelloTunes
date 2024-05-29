@@ -14,40 +14,41 @@ interface Props {
 
 const TrackDetailsCard = ({ track, isLoading }: Props) => {
   if (isLoading) return <SkeletonCard detailsCard />;
-  return (
-    <DetailsCard imageSrc={track?.album.images[0].url || PHTrack}>
-      <Image
-        aspectRatio={1 / 1}
-        height={"20rem"}
-        objectFit={"cover"}
-        margin={"auto"}
-        borderRadius={5}
-        src={track?.album.images[1].url}
-        background={`url(${PHTrack})`}
-        bgSize={"cover"}
-        alt={track?.name}
-      />
-      <CardBody marginY={"auto"}>
-        <Heading
-          textAlign={{ base: "center", sm: "left" }}
-          as={"h3"}
-          size={"sm"}
-        >
-          {track?.type}
-        </Heading>
-        <Heading1 isLoading={isLoading}>{track?.name}</Heading1>
-        <DetailsHeading detail="Album">{[track?.album.name]}</DetailsHeading>
-        <DetailsHeading detail="Artist/s">
-          {track?.artists.map((artist) => artist.name) || []}
-        </DetailsHeading>
-        <DetailsHeading detail="Popularity">
-          {[track?.popularity]}
-        </DetailsHeading>
-        <DetailsHeading detail="Duration">
-          {[durationFormater(track?.duration_ms)]}
-        </DetailsHeading>
-      </CardBody>
-    </DetailsCard>
-  );
+  if (track)
+    return (
+      <DetailsCard imageSrc={track.album.images[0]?.url || PHTrack}>
+        <Image
+          aspectRatio={1 / 1}
+          height={"20rem"}
+          objectFit={"cover"}
+          margin={"auto"}
+          borderRadius={5}
+          src={track.album.images[1]?.url}
+          background={`url(${PHTrack})`}
+          bgSize={"cover"}
+          alt={""}
+        />
+        <CardBody marginY={"auto"}>
+          <Heading
+            textAlign={{ base: "center", sm: "left" }}
+            as={"h3"}
+            size={"sm"}
+          >
+            {track.type}
+          </Heading>
+          <Heading1 isLoading={isLoading}>{track.name}</Heading1>
+          <DetailsHeading detail="Album">{[track.album.name]}</DetailsHeading>
+          <DetailsHeading detail="Artist/s">
+            {track.artists.map((artist) => artist.name) || []}
+          </DetailsHeading>
+          <DetailsHeading detail="Popularity">
+            {[track.popularity]}
+          </DetailsHeading>
+          <DetailsHeading detail="Duration">
+            {[durationFormater(track.duration_ms)]}
+          </DetailsHeading>
+        </CardBody>
+      </DetailsCard>
+    );
 };
 export default TrackDetailsCard;

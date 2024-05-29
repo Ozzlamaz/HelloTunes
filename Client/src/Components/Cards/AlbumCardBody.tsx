@@ -16,10 +16,10 @@ const AlbumCardBody = ({ album }: Props) => {
         marginX={"auto"}
         objectFit={"cover"}
         borderRadius={"50%"}
-        src={album.images[1].url}
+        src={album.images[1]?.url}
         background={`url(${PHAlbum})`}
         bgSize={"cover"}
-        alt={album.name}
+        alt={""}
       />
       <Box paddingY={3}>
         <CardHeading textAlign={"center"} size="sm" as={"h2"}>

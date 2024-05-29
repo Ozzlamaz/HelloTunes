@@ -20,7 +20,7 @@ const ArtistCardBody = ({ artist, topResult }: Props) => {
         src={topResult ? artist.images[0]?.url : artist.images[1]?.url}
         background={`url(${PHArtist})`}
         bgSize={"cover"}
-        alt={artist.name}
+        alt={""}
       />
       <Box paddingY={3}>
         <CardHeading
