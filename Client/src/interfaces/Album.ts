@@ -15,8 +15,3 @@ export interface Album {
   popularity: number;
   uri: string;
 }
-
-export interface AlbumsResponse {
-  total: number;
-  items: Album[];
-}

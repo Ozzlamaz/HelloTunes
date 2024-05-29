@@ -13,8 +13,3 @@ export interface Track {
   preview: string;
   uri: string;
 }
-
-export interface TracksSubDetails {
-  total: number;
-  items: Track[];
-}

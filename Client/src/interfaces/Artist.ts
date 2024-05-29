@@ -13,8 +13,3 @@ export interface Artist {
   popularity: number;
   uri: string;
 }
-
-export interface ArtistsResponse {
-  total: number;
-  items: Artist[];
-}
