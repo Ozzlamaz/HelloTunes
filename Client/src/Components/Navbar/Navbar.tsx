@@ -1,5 +1,5 @@
 import { HStack, Image } from "@chakra-ui/react";
-import logo from "../../assets/logo/Damn-Tunes-Logo.webp";
+import logo from "../../assets/logo/logo.webp";
 import SearchInput from "./SearchInput";
 import { NavLink } from "react-router-dom";
 import ThemeSwitch from "./ThemeSwitch";
