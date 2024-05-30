@@ -6,6 +6,7 @@ import InfiniteSeachPage from "../Pages/InfiniteSeachPage";
 import AlbumDetails from "../Pages/AlbumDetailsPage";
 import ArtistDetails from "../Pages/ArtistDetailsPage";
 import TrackDetails from "../Pages/TrackDetailsPage";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -21,10 +22,6 @@ const router = createBrowserRouter([
         path: "search/:type/:q",
         element: <InfiniteSeachPage />,
       },
-      // {
-      //   path: "details/:type/:id",
-      //   element: <ItemDetailsPage />,
-      // },
       {
         path: "details/album/:id",
         element: <AlbumDetails />,
@@ -36,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "details/track/:id",
         element: <TrackDetails />,
+      },
+      {
+        path: "*",
+        element: <ErrorPage />,
       },
     ],
   },
