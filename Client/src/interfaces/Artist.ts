@@ -4,7 +4,7 @@ export interface Artist {
   id: string;
   followers: {
     href: string;
-    total: string;
+    total: number;
   };
   genres: string[];
   images: Image[];

@@ -2,10 +2,10 @@ import { CardBody, Image } from "@chakra-ui/react";
 import { Artist } from "../../interfaces/Artist";
 import SkeletonCard from "../SkeletonCard";
 import DetailsCard from "./DetailsCard";
-import DetailsHeading from "./DetailsHeading";
 import Heading1 from "../Headings/Heading1";
 import Heading3 from "../Headings/Heading3";
 import PHArtist from "../../assets/placeholders/PHArtist.webp";
+import DetailsListing from "./DetailsListing";
 
 interface Props {
   artist?: Artist;
@@ -30,17 +30,17 @@ const ArtistDetailsCard = ({ artist, isLoading }: Props) => {
           alt={""}
         />
         <CardBody marginY={"auto"}>
-          <Heading3 isLoading={isLoading}>{artist?.type}</Heading3>
-          <Heading1 isLoading={isLoading}>{artist?.name}</Heading1>
-          <DetailsHeading detail="Genres">
-            {artist.genres.length > 0 ? artist.genres : ["Unknown"]}
-          </DetailsHeading>
-          <DetailsHeading detail="Popularity">
-            {[artist.popularity]}
-          </DetailsHeading>
-          <DetailsHeading detail="Followers">
-            {artist ? [parseInt(artist?.followers.total).toLocaleString()] : []}
-          </DetailsHeading>
+          <Heading3 isLoading={isLoading}>{artist.type}</Heading3>
+          <Heading1 isLoading={isLoading}>{artist.name}</Heading1>
+          <DetailsListing
+            heading="Genres"
+            detailArr={artist.genres.length > 0 ? artist.genres : ["Unknown"]}
+          />
+          <DetailsListing heading="Popularity" detail={artist.popularity} />
+          <DetailsListing
+            heading="Followers"
+            detail={artist?.followers.total.toLocaleString()}
+          />
         </CardBody>
       </DetailsCard>
     );

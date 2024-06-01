@@ -2,7 +2,7 @@ import { CardBody, Heading, Image } from "@chakra-ui/react";
 import { Track } from "../../interfaces/Track";
 import SkeletonCard from "../SkeletonCard";
 import DetailsCard from "./DetailsCard";
-import DetailsHeading from "./DetailsHeading";
+import DetailsListing from "./DetailsListing";
 import durationFormater from "../../services/durationFormater";
 import Heading1 from "../Headings/Heading1";
 import PHTrack from "../../assets/placeholders/PHTrack.webp";
@@ -37,16 +37,29 @@ const TrackDetailsCard = ({ track, isLoading }: Props) => {
             {track.type}
           </Heading>
           <Heading1 isLoading={isLoading}>{track.name}</Heading1>
-          <DetailsHeading detail="Album">{[track.album.name]}</DetailsHeading>
-          <DetailsHeading detail="Artist/s">
-            {track.artists.map((artist) => artist.name) || []}
-          </DetailsHeading>
-          <DetailsHeading detail="Popularity">
-            {[track.popularity]}
-          </DetailsHeading>
-          <DetailsHeading detail="Duration">
-            {[durationFormater(track.duration_ms)]}
-          </DetailsHeading>
+          <DetailsListing
+            heading="Album"
+            detailWithLinks={[
+              {
+                name: track.album.name,
+                id: track.album.id,
+                type: track.album.type,
+              },
+            ]}
+          />
+          <DetailsListing
+            heading="Artist/s"
+            detailWithLinks={track.artists.map((artist) => ({
+              name: artist.name,
+              id: artist.id,
+              type: artist.type,
+            }))}
+          />
+          <DetailsListing heading="Popularity" detail={track.popularity} />
+          <DetailsListing
+            heading="Duration"
+            detail={durationFormater(track.duration_ms)}
+          />
         </CardBody>
       </DetailsCard>
     );
