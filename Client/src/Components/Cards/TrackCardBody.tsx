@@ -19,9 +19,7 @@ const TrackCardBody = ({ track, details }: Props) => {
             aspectRatio={1 / 1}
             objectFit={"cover"}
             height={"3em"}
-            src={track.album.images[2]?.url}
-            background={`url(${PHTrack})`}
-            bgSize={"cover"}
+            src={track.album.images[2]?.url || PHTrack}
             alt={""}
           />
         )}

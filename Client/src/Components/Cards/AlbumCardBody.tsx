@@ -16,9 +16,7 @@ const AlbumCardBody = ({ album }: Props) => {
         marginX={"auto"}
         objectFit={"cover"}
         borderRadius={"50%"}
-        src={album.images[1]?.url}
-        background={`url(${PHAlbum})`}
-        bgSize={"cover"}
+        src={album.images[1]?.url || PHAlbum}
         alt={""}
       />
       <Box paddingY={3}>
