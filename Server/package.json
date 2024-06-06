@@ -4,8 +4,9 @@
   "description": "DamnTunes Backend",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon",
-    "build": "tsc"
+    "dev": "nodemon",
+    "build": "tsc",
+    "start": "node ./dist/index.js"
   },
   "keywords": [],
   "author": "Ahmad Osman",
