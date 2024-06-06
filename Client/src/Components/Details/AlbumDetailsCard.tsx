@@ -24,9 +24,7 @@ const AlbumDetailsCard = ({ album, isLoading }: Props) => {
           objectFit={"cover"}
           margin={"auto"}
           borderRadius={5}
-          src={album.images[1]?.url}
-          background={`url(${PHAlbum})`}
-          bgSize={"cover"}
+          src={album.images[1]?.url || PHAlbum}
           alt={""}
         />
         <CardBody>

@@ -23,9 +23,7 @@ const ArtistDetailsCard = ({ artist, isLoading }: Props) => {
           objectFit={"cover"}
           margin={"auto"}
           borderRadius={5}
-          src={artist.images[1]?.url}
-          background={`url(${PHArtist})`}
-          bgSize={"cover"}
+          src={artist.images[1]?.url || PHArtist}
           color={"#000"}
           alt={""}
         />

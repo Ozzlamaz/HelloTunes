@@ -23,9 +23,7 @@ const TrackDetailsCard = ({ track, isLoading }: Props) => {
           objectFit={"cover"}
           margin={"auto"}
           borderRadius={5}
-          src={track.album.images[1]?.url}
-          background={`url(${PHTrack})`}
-          bgSize={"cover"}
+          src={track.album.images[1]?.url || PHTrack}
           alt={""}
         />
         <CardBody marginY={"auto"}>
