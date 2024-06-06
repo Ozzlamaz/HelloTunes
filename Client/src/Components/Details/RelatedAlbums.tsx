@@ -5,6 +5,8 @@ import ItemGrid from "../Containers/ItemGrid";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ScrollContainer from "../Containers/ScrollContainer";
 import Heading2 from "../Headings/Heading2";
+import CustomErrorComp from "../Error/CustomErrorComp";
+import SubSection from "../Containers/SubSection";
 
 interface Props {
   artist?: Artist;
@@ -23,6 +25,14 @@ const RelatedAlbums = ({ artist, album, isLoading }: Props) => {
 
   const itemCount =
     data?.pages.reduce((total, page) => total + page.items.length, 0) || 0;
+
+  if (data?.pages[0].items.length === 0)
+    return (
+      <SubSection>
+        <Heading2 isLoading={isLoading}>Albums</Heading2>
+        <CustomErrorComp error={"No Related Albums Found"} />
+      </SubSection>
+    );
 
   return (
     <>

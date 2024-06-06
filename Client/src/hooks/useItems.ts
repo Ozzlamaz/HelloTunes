@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import getData from "../services/apiClient";
 import { ResponseData } from "../interfaces/ResponseData";
 import { Params } from "react-router-dom";
+import { AxiosError } from "axios";
 
 const useItems = (params: Params<string>) => {
   if (!params.q) {
@@ -10,7 +11,7 @@ const useItems = (params: Params<string>) => {
   if (!params.type) {
     params = { ...params, type: "album,artist,track" };
   }
-  return useQuery<ResponseData, Error>({
+  return useQuery<ResponseData, AxiosError>({
     queryKey: ["SearchResponse", params],
     queryFn: () =>
       getData("/search?", {

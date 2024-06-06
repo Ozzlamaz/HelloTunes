@@ -5,10 +5,18 @@ import TrackDetailsCard from "../Components/Details/TrackDetailsCard";
 import useItemDetails from "../hooks/useItemDetails";
 import { Track } from "../interfaces/Track";
 import SubSection from "../Components/Containers/SubSection";
+import ResponseErrorComp from "../Components/Error/ResponseErrorComp";
 
 const TrackDetailsPage = () => {
   const { id } = useParams();
-  const { data: track, isLoading } = useItemDetails<Track>("tracks", id!);
+  const {
+    data: track,
+    isLoading,
+    error,
+  } = useItemDetails<Track>("tracks", id!);
+
+  if (error) return <ResponseErrorComp error={error} />;
+
   return (
     <>
       <Section>

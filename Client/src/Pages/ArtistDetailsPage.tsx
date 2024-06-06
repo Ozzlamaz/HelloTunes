@@ -5,10 +5,18 @@ import RelatedAlbums from "../Components/Details/RelatedAlbums";
 import useItemDetails from "../hooks/useItemDetails";
 import { useParams } from "react-router-dom";
 import SubSection from "../Components/Containers/SubSection";
+import ResponseErrorComp from "../Components/Error/ResponseErrorComp";
 
 const ArtistDetailsPage = () => {
   const { id } = useParams();
-  const { data: artist, isLoading } = useItemDetails<Artist>("artists", id!);
+  const {
+    data: artist,
+    isLoading,
+    error,
+  } = useItemDetails<Artist>("artists", id!);
+
+  if (error) return <ResponseErrorComp error={error} />;
+
   return (
     <>
       <Section>

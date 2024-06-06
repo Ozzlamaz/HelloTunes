@@ -6,11 +6,12 @@ import Section from "../Components/Containers/Section";
 import SubSection from "../Components/Containers/SubSection";
 import Heading1 from "../Components/Headings/Heading1";
 import ScrollContainer from "../Components/Containers/ScrollContainer";
+import ErrorComponent from "../Components/Error/ResponseErrorComp";
 
 const InfiniteSeachPage = () => {
   const params = useParams();
 
-  const { data, fetchNextPage, hasNextPage, isLoading } =
+  const { data, fetchNextPage, hasNextPage, isLoading, error } =
     useInfiniteItems(params);
 
   const itemCount =
@@ -18,6 +19,8 @@ const InfiniteSeachPage = () => {
       (total, page) => total + page[`${params.type}s`].items.length,
       0
     ) || 0;
+
+  if (error) return <ErrorComponent error={error} />;
 
   return (
     <Section maxW="6xl">

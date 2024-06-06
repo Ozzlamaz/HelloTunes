@@ -8,10 +8,18 @@ import { useParams } from "react-router-dom";
 import useItemDetails from "../hooks/useItemDetails";
 import ScrollContainer from "../Components/Containers/ScrollContainer";
 import Heading2 from "../Components/Headings/Heading2";
+import ResponseErrorComp from "../Components/Error/ResponseErrorComp";
 
 const AlbumDetailsPage = () => {
   const { id } = useParams();
-  const { data: album, isLoading } = useItemDetails<Album>("albums", id!);
+  const {
+    data: album,
+    isLoading,
+    error,
+  } = useItemDetails<Album>("albums", id!);
+
+  if (error) return <ResponseErrorComp error={error} />;
+
   return (
     <>
       <Section>

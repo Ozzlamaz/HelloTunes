@@ -1,87 +1,37 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import useItems from "../hooks/useItems";
 import { useParams } from "react-router-dom";
-import ItemGrid from "../Components/Containers/ItemGrid";
-import ShowMore from "../Components/ShowMore";
-import TopResultCard from "../Components/Cards/TopResultCard";
+import TopResult from "../Components/SearchPageComponents/TopResult";
 import Section from "../Components/Containers/Section";
 import Heading1 from "../Components/Headings/Heading1";
-import SubSection from "../Components/Containers/SubSection";
-import ItemCard from "../Components/Cards/ItemCard";
-import { SwiperSlide } from "swiper/react";
-import SearchSwiper from "../Components/Swiper/SearchSwiper";
-import ScrollContainer from "../Components/Containers/ScrollContainer";
-import Heading2 from "../Components/Headings/Heading2";
+import ResponseErrorComp from "../Components/Error/ResponseErrorComp";
+import TracksResults from "../Components/SearchPageComponents/TracksResults";
+import AlbumsResults from "../Components/SearchPageComponents/AlbumsResults";
+import ArtistResults from "../Components/SearchPageComponents/ArtistResults";
 
 const SearchPage = () => {
   const params = useParams();
-  const { data, isLoading } = useItems(params);
+  const { data, isLoading, error } = useItems(params);
+
+  if (error) return <ResponseErrorComp error={error} />;
 
   return (
     <Section>
       <Heading1 isLoading={isLoading}>{params.q}</Heading1>
-      <Grid
-        gridGap={5}
-        templateRows={"auto auto auto"}
-        templateColumns={"repeat(2, 1fr)"}
-      >
+      <Grid gridGap={5} templateColumns={"1fr 1fr"}>
         <GridItem colSpan={{ base: 2, lg: 1 }}>
-          <SubSection>
-            <Heading2 isLoading={isLoading}>Top Result</Heading2>
-            <TopResultCard
-              isLoading={isLoading}
-              item={data?.artists.items[0]}
-            />
-          </SubSection>
+          <TopResult isLoading={isLoading} item={data?.artists.items[0]} />
         </GridItem>
-        <GridItem colSpan={{ base: 2, lg: 1 }}>
-          <SubSection>
-            <Heading2 paddingX={5} isLoading={isLoading}>
-              Tracks
-            </Heading2>
-            <ScrollContainer id="scroll-container" maxHeight="27.45rem">
-              <ItemGrid isLoading={isLoading} items={data?.tracks.items} list />
-            </ScrollContainer>
-            <ShowMore
-              disabled={isLoading}
-              type={data?.tracks.items[0].type}
-              query={params.q!}
-            />
-          </SubSection>
+        <GridItem
+          colSpan={{ base: 2, lg: data?.artists.items.length === 0 ? 2 : 1 }}
+        >
+          <TracksResults tracks={data?.tracks.items} isLoading={isLoading} />
         </GridItem>
         <GridItem colSpan={2}>
-          <SubSection>
-            <Heading2 isLoading={isLoading}>Albums</Heading2>
-            <SearchSwiper isLoading={isLoading} paginationDiv="album-swiper">
-              {data?.albums.items.map((item) => (
-                <SwiperSlide key={item.id}>
-                  <ItemCard item={item} />
-                </SwiperSlide>
-              ))}
-            </SearchSwiper>
-            <ShowMore
-              disabled={isLoading}
-              type={data?.albums.items[0].type}
-              query={params.q!}
-            />
-          </SubSection>
+          <AlbumsResults albums={data?.albums.items} isLoading={isLoading} />
         </GridItem>
         <GridItem colSpan={2}>
-          <SubSection>
-            <Heading2 isLoading={isLoading}>Artists</Heading2>
-            <SearchSwiper isLoading={isLoading} paginationDiv="artist-swiper">
-              {data?.artists.items.map((item) => (
-                <SwiperSlide key={item.id}>
-                  <ItemCard item={item} />
-                </SwiperSlide>
-              ))}
-            </SearchSwiper>
-            <ShowMore
-              disabled={isLoading}
-              type={data?.artists.items[0].type}
-              query={params.q!}
-            />
-          </SubSection>
+          <ArtistResults artists={data?.artists.items} isLoading={isLoading} />
         </GridItem>
       </Grid>
     </Section>

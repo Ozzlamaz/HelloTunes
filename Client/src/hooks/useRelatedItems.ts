@@ -1,13 +1,14 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import getData from "../services/apiClient";
 import { RelatedItemsRes } from "../interfaces/RelatedItemsRes";
+import { AxiosError } from "axios";
 
 const useRelatedItems = <T>(
   relatedType: string,
   relatedId: string | undefined,
   relatedItems: string
 ) =>
-  useInfiniteQuery<RelatedItemsRes<T>>({
+  useInfiniteQuery<RelatedItemsRes<T>, AxiosError>({
     queryKey: [`related${relatedItems}`, relatedId],
     queryFn: ({ pageParam }) =>
       getData(`${relatedType!}/${relatedId}/${relatedItems}`, {
