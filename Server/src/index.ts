@@ -9,7 +9,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://main--hellotunes.netlify.app",
+    origin: "https://main--hellotunes.netlify.app", // change this to local host in dev env
     credentials: true,
   })
 );
