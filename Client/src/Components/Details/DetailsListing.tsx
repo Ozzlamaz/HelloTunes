@@ -33,9 +33,14 @@ const DetailsListing = ({
             ))}
           {detailWithLinks &&
             detailWithLinks.map((detail) => (
-              <Link key={detail.id} to={`/details/${detail.type}/${detail.id}`}>
-                <Detail>{detail.name}</Detail>
-              </Link>
+              <Box margin={{ base: "auto", sm: "unset" }}>
+                <Link
+                  key={detail.id}
+                  to={`/details/${detail.type}/${detail.id}`}
+                >
+                  <Detail>{detail.name}</Detail>
+                </Link>
+              </Box>
             ))}
         </Stack>
       </HStack>
