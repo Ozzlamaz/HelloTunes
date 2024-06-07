@@ -4,7 +4,9 @@ let counter: number;
 const getCookie = async () => {
   clearTimeout(counter);
   counter = setTimeout(() => {
-    axios.get(import.meta.env.VITE_COOKIE_URL);
+    axios.get(import.meta.env.VITE_COOKIE_URL, {
+      withCredentials: true,
+    });
   }, 100);
 };
 

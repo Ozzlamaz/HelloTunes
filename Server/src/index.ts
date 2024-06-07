@@ -7,7 +7,12 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://main--hellotunes.netlify.app",
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 
 app.get("/token", async (req: express.Request, res: express.Response) => {
