@@ -19,8 +19,6 @@ app.get("/token", async (req: express.Request, res: express.Response) => {
   const response = await getToken();
   res.cookie("token", JSON.stringify(response.data), {
     maxAge: response.data.expires_in * 1000,
-    secure: true,
-    sameSite: "none",
   });
   res.status(response.status).json({ message: "done" });
 });
