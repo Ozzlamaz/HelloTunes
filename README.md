@@ -1,4 +1,4 @@
-#Spotify clone built with modern web technologies including React, React Query, and Chakra UI.
+# Spotify clone built with modern web technologies including React, React Query, and Chakra UI.
 
 ## Features
 - Search: Search for songs, albums, and artists.
