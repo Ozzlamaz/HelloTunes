@@ -2,28 +2,19 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import getToken from "./services/getToken";
-import cookieParser from "cookie-parser";
 dotenv.config();
 
 const app = express();
 
 app.use(
   cors({
-    origin: "https://main--hellotunes.netlify.app",
-    credentials: true,
+    origin: process.env.APP_URL,
   })
 );
-app.use(cookieParser());
 
 app.get("/token", async (req: express.Request, res: express.Response) => {
   const response = await getToken();
-  res.cookie("token", JSON.stringify(response.data), {
-    maxAge: response.data.expires_in * 1000,
-    httpOnly: false,
-    secure: true,
-    sameSite: "none",
-  });
-  res.status(response.status).json({ message: "done" });
+  res.status(200).send(response.data);
 });
 
 app.listen(process.env.PORT, () => {
