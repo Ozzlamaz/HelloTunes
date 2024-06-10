@@ -17,7 +17,7 @@ const useItems = (params: Params<string>) => {
       getData("/search?", {
         params: {
           ...params,
-          limit: 10,
+          limit: 5,
         },
       }),
     staleTime: 8 * 60 * 60 * 1000, // 8h
