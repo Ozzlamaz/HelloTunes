@@ -3,12 +3,11 @@ import { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
-  maxW?: string;
 }
 
-const Section = ({ children, maxW = "100%" }: Props) => {
+const Section = ({ children }: Props) => {
   return (
-    <Box maxW={maxW} marginY={10} marginX={"auto"}>
+    <Box marginY="2.5rem" marginX="auto">
       {children}
     </Box>
   );

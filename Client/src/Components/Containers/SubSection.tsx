@@ -8,11 +8,12 @@ interface Props {
 const SubSection = ({ children }: Props) => {
   return (
     <Box
-      marginY={5}
-      marginX={"auto"}
-      padding={5}
-      backgroundColor={"blackAlpha.50"}
+      marginY="1.25rem"
+      marginX="auto"
+      padding="1.25rem"
+      backgroundColor="blackAlpha.100"
       borderRadius={5}
+      position="relative"
     >
       {children}
     </Box>

@@ -25,7 +25,7 @@ const AlbumDetailsPage = () => {
       <Section>
         <AlbumDetailsCard isLoading={isLoading} album={album} />
       </Section>
-      <Section maxW={"6xl"}>
+      <Section>
         <SubSection>
           <Heading2 paddingX={5} isLoading={isLoading}>
             {album?.name + " Tracks"}

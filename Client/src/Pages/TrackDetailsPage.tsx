@@ -22,7 +22,7 @@ const TrackDetailsPage = () => {
       <Section>
         <TrackDetailsCard isLoading={isLoading} track={track} />
       </Section>
-      <Section maxW="6xl">
+      <Section>
         <SubSection>
           <RelatedTracks track={track} isLoading={isLoading} />
         </SubSection>

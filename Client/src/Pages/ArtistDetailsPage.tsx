@@ -22,7 +22,7 @@ const ArtistDetailsPage = () => {
       <Section>
         <ArtistDetailsCard isLoading={isLoading} artist={artist} />
       </Section>
-      <Section maxW="6xl">
+      <Section>
         <SubSection>
           <RelatedAlbums artist={artist} isLoading={isLoading} />
         </SubSection>

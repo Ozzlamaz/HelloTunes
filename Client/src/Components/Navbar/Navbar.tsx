@@ -13,7 +13,6 @@ const Navbar = () => {
       </NavLink>
       <BurgerMenu>
         <NavLink to={"/"}>Home</NavLink>
-        <NavLink to={"/author"}>Author</NavLink>
         <SearchInput />
         <ThemeSwitch />
       </BurgerMenu>
